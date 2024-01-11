@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Theme structure done with heavy inspiration from:
 // https://medium.com/@kinjal.dhamat.sa/light-dark-app-theme-with-custom-color-in-flutter-c686db585f0c
 
-final appThemeProvider = StateProvider<bool>((ref) => false);
+final appThemeProvider = StateProvider<bool>((ref) => true);
 
 // Extension function which we use to access custom color easily.
 AppColors colors(context) => Theme.of(context).extension<AppColors>()!;
@@ -13,8 +13,8 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
   return ThemeData(
     extensions: <ThemeExtension<AppColors>>[
       AppColors(
-        color1: isDarkTheme ? Colors.blue : Colors.green,
-        color2: isDarkTheme ? Colors.pink : Colors.blue,
+        color1: isDarkTheme ? Colors.black : Colors.white,
+        color2: isDarkTheme ? Colors.black : Colors.white,
         color3: isDarkTheme ? Colors.yellow : Colors.red,
       ),
     ],
@@ -34,7 +34,11 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
           fontSize: 36,
           fontWeight: FontWeight.bold,
           color: isDarkTheme ? Colors.white60 : Colors.black54,
-        )),
+        ),
+        displaySmall: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            color: isDarkTheme ? Colors.white60 : Colors.black54)),
   );
 }
 
@@ -69,6 +73,12 @@ class AppColors extends ThemeExtension<AppColors> {
   }
 
   // This is to make transitions and animations smoother looking colors wise.
+  // if the other object is not of type AppColors,
+  // the lerp method returns the current instance of AppColors (this)
+  // without performing any color interpolation.
+  // This is a safety check to make sure that the lerp method
+  // is only called with objects of the correct type,
+  // preventing unintended behavior or errors in case the other object is not a valid AppColors instance.
   @override
   AppColors lerp(ThemeExtension<AppColors>? other, double t) {
     if (other is! AppColors) {
