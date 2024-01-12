@@ -7,7 +7,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final appThemeProvider = StateProvider<bool>((ref) => true);
 
 // Extension function which we use to access custom color easily.
-AppColors colors(context) => Theme.of(context).extension<AppColors>()!;
+AppColors colors(context) =>
+    Theme.of(context as BuildContext).extension<AppColors>()!;
 
 ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
   return ThemeData(

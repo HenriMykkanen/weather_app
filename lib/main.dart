@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weather_app/screens/home_screen.dart';
-import 'package:weather_app/screens/search_screen.dart';
-import 'package:weather_app/styling/theme.dart';
+import 'package:weather_app/presentation/home_screen.dart';
+import 'package:weather_app/presentation/search_screen.dart';
+import 'package:weather_app/constants/theme.dart';
 import 'package:weather_app/widgets/ScaffoldWithNavbar.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
