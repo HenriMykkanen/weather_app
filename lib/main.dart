@@ -46,7 +46,7 @@ final GoRouter _router = GoRouter(
 
 void main() {
   runApp(ProviderScope(
-    child: fromJSONTestWidget(),
+    child: MainApp(),
   ));
 }
 

@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 // https://codewithandrea.com/articles/parse-json-dart/
 // https://codewithandrea.com/articles/parse-json-dart-codegen-freezed/
 
@@ -10,7 +11,7 @@ class Forecast {
     required this.weatherType,
   });
 
-  final DateTime time;
+  final String time;
   final double temperature;
   final double temperatureMin;
   final double temperatureMax;
@@ -18,14 +19,16 @@ class Forecast {
 
   factory Forecast.fromJSON(Map<String, dynamic> data) {
     final timestamp = data['dt'] as int;
-    final DateTime time = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-    final temperatureBeforeConvert = data['main']['temp'];
-    final temperature = temperatureBeforeConvert.toDouble();
-    final temperatureMin = data['main']['temp_min'] as double;
-    final temperatureMax = data['main']['temp_max'] as double;
+    final time = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+    final formattedTime = DateFormat.Hm().format(time); // Format to "18:00"
+
+    final temperature = data['main']['temp'].toDouble();
+    final temperatureMin = data['main']['temp_min'].toDouble();
+    final temperatureMax = data['main']['temp_max'].toDouble();
+
     final weatherType = data['weather'][0]['main'] as String;
     return Forecast(
-      time: time,
+      time: formattedTime,
       temperature: temperature,
       temperatureMin: temperatureMin,
       temperatureMax: temperatureMax,

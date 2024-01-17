@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/constants/theme.dart';
 import 'package:weather_app/presentation/current_weather.dart';
+import 'package:weather_app/presentation/today_weather.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -15,17 +16,8 @@ class HomeScreen extends ConsumerWidget {
           child: Center(
             child: Column(
               children: [
-                const SizedBox(
-                  height: 24,
-                ),
-                CurrentWeather(city: 'Kuopio', currentTemperature: -13.0),
-                const SizedBox(
-                  height: 24,
-                ),
-                const SizedBox(
-                  width: 48,
-                  height: 48,
-                ),
+                CurrentWeather(),
+                TodaysWeather(),
                 Expanded(
                   child: ListView(
                     children: [
