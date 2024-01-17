@@ -1,11 +1,13 @@
+import 'dart:developer' as developer;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:weather_app/constants/theme.dart';
+import 'package:weather_app/domain/forecast/forecast.dart';
 import 'package:weather_app/widgets/ScaffoldWithNavbar.dart';
 
 class SearchScreen extends ConsumerWidget {
-  const SearchScreen({super.key});
+  SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,11 +26,12 @@ class SearchScreen extends ConsumerWidget {
               style: Theme.of(context).textTheme.displayLarge,
             ),
             Switch(
-                activeColor: Colors.orange,
-                onChanged: (value) {
-                  ref.read(appThemeProvider.notifier).state = value;
-                },
-                value: isDarkTheme)
+              activeColor: Colors.orange,
+              onChanged: (value) {
+                ref.read(appThemeProvider.notifier).state = value;
+              },
+              value: isDarkTheme,
+            ),
           ]),
         ),
       ),

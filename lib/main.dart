@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:weather_app/presentation/fromjson_test_widget.dart';
 import 'package:weather_app/presentation/home_screen.dart';
 import 'package:weather_app/presentation/search_screen.dart';
 import 'package:weather_app/constants/theme.dart';
 import 'package:weather_app/widgets/ScaffoldWithNavbar.dart';
+import 'package:weather_app/data/forecast_repository.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -34,7 +36,7 @@ final GoRouter _router = GoRouter(
         GoRoute(
           path: '/b',
           builder: (BuildContext context, GoRouterState state) {
-            return const SearchScreen();
+            return SearchScreen();
           },
         ),
       ],
@@ -43,8 +45,8 @@ final GoRouter _router = GoRouter(
 );
 
 void main() {
-  runApp(const ProviderScope(
-    child: MainApp(),
+  runApp(ProviderScope(
+    child: fromJSONTestWidget(),
   ));
 }
 

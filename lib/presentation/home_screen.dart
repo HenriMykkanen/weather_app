@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/constants/theme.dart';
+import 'package:weather_app/presentation/current_weather.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -17,133 +18,9 @@ class HomeScreen extends ConsumerWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: colors(context).color2!),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  width: double.infinity,
-                  height: 192,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Kuopio',
-                        style: Theme.of(context).textTheme.displayLarge,
-                      ),
-                      Text(
-                        '-13\u2103',
-                        style: Theme.of(context).textTheme.displayMedium,
-                      ),
-                    ],
-                  ),
-                ),
+                CurrentWeather(city: 'Kuopio', currentTemperature: -13.0),
                 const SizedBox(
                   height: 24,
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: colors(context).color2!),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  width: double.infinity,
-                  height: 96,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Container(
-                        width: 96,
-                        color: colors(context).color1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Now',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                            Icon(Icons.sunny),
-                            Text(
-                              '-13\u2103',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 96,
-                        color: colors(context).color1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '18:00',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                            Icon(Icons.sunny),
-                            Text(
-                              '-13\u2103',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 96,
-                        color: colors(context).color1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '19:00',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                            Icon(Icons.sunny),
-                            Text(
-                              '-15\u2103',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 96,
-                        color: colors(context).color1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '20:00',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                            Icon(Icons.sunny),
-                            Text(
-                              '-18\u2103',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: 96,
-                        color: colors(context).color1,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '21:00',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                            Icon(Icons.sunny),
-                            Text(
-                              '-20\u2103',
-                              style: Theme.of(context).textTheme.displaySmall,
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
                 ),
                 const SizedBox(
                   width: 48,

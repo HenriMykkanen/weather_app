@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:weather_app/api/api.dart';
 import 'package:weather_app/api/api_keys.dart';
 import 'package:weather_app/data/api_exception.dart';
-import 'package:weather_app/domain/forecast.dart';
+import 'package:weather_app/domain/forecast/forecast.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,8 +14,12 @@ class HttpForecastRepository {
   final OpenWeatherMapAPI api;
   final http.Client client;
 
-  Future<Forecast> getForecast({required String city}) => _getData(
-      uri: api.forecast(city), builder: (data) => Forecast.fromJSON(data));
+  Future<Forecast> getForecastList({required String city}) => _getData(
+      uri: api.forecastNow(city), builder: (data) => Forecast.fromJSON(data));
+
+  Future<ForecastList> getForecastFiveDays({required String city}) => _getData(
+      uri: api.forecastFiveDays(city),
+      builder: (data) => ForecastList.fromJSON(data));
 
   Future<GenericType> _getData<GenericType>({
     required Uri uri,
@@ -23,9 +27,11 @@ class HttpForecastRepository {
   }) async {
     try {
       final response = await client.get(uri);
+      // print(response);
       switch (response.statusCode) {
         case 200: // 200 OK - Indicates that the request has succeeded
           final data = json.decode(response.body);
+          // print(data);
           return builder(data);
         case 401: // 401 Unauthorized -  Indicates that the request requires user authentication information
           throw InvalidApiKeyException();

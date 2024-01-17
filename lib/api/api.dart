@@ -6,10 +6,15 @@ class OpenWeatherMapAPI {
   final String apiKey;
 
   static const String _apiBaseUrl = "api.openweathermap.org";
-  static const String _apiPath = "/data/2.5";
+  static const String _apiPath = "/data/2.5/";
 
-  Uri forecast(String city) => _buildUri(
+  Uri forecastNow(String city) => _buildUri(
         endpoint: "weather",
+        parametersBuilder: () => cityQueryParameters(city),
+      );
+
+  Uri forecastFiveDays(city) => _buildUri(
+        endpoint: "forecast",
         parametersBuilder: () => cityQueryParameters(city),
       );
 

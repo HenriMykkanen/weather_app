@@ -1,0 +1,51 @@
+// https://codewithandrea.com/articles/parse-json-dart/
+// https://codewithandrea.com/articles/parse-json-dart-codegen-freezed/
+
+class Forecast {
+  Forecast({
+    required this.time,
+    required this.temperature,
+    required this.temperatureMin,
+    required this.temperatureMax,
+    required this.weatherType,
+  });
+
+  final DateTime time;
+  final double temperature;
+  final double temperatureMin;
+  final double temperatureMax;
+  final String weatherType;
+
+  factory Forecast.fromJSON(Map<String, dynamic> data) {
+    final timestamp = data['dt'] as int;
+    final DateTime time = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
+    final temperatureBeforeConvert = data['main']['temp'];
+    final temperature = temperatureBeforeConvert.toDouble();
+    final temperatureMin = data['main']['temp_min'] as double;
+    final temperatureMax = data['main']['temp_max'] as double;
+    final weatherType = data['weather'][0]['main'] as String;
+    return Forecast(
+      time: time,
+      temperature: temperature,
+      temperatureMin: temperatureMin,
+      temperatureMax: temperatureMax,
+      weatherType: weatherType,
+    );
+  }
+}
+
+class ForecastList {
+  final List<Forecast> list;
+
+  ForecastList(this.list);
+
+  factory ForecastList.fromJSON(dynamic json) {
+    final forecastListDynamic = json['list'] as List<dynamic>;
+    final List<Forecast> forecasts = forecastListDynamic
+        .map(
+          (e) => Forecast.fromJSON(e),
+        )
+        .toList();
+    return ForecastList(forecasts);
+  }
+}
