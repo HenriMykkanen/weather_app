@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/application/providers.dart';
@@ -35,7 +36,13 @@ class UpcomingWeather extends ConsumerWidget {
                             style: Theme.of(context).textTheme.displaySmall,
                           ),
                         ),
-                        Expanded(child: Icon(Icons.cloud)),
+                        CachedNetworkImage(
+                            placeholder: (context, url) =>
+                                CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                            imageUrl:
+                                "http://openweathermap.org/img/wn/${weatherObject.weatherIcon}@2x.png"),
                         Expanded(
                           child: Align(
                             alignment: Alignment.centerRight,
@@ -64,7 +71,13 @@ class UpcomingWeather extends ConsumerWidget {
                             style: Theme.of(context).textTheme.displaySmall,
                           ),
                         ),
-                        Expanded(child: Icon(Icons.cloud)),
+                        CachedNetworkImage(
+                            placeholder: (context, url) =>
+                                CircularProgressIndicator(),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                            imageUrl:
+                                "http://openweathermap.org/img/wn/${weatherObject.weatherIcon}@2x.png"),
                         Expanded(
                           child: Align(
                             alignment: Alignment.centerRight,
