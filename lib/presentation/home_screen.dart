@@ -10,16 +10,16 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return SafeArea(
+    return const SafeArea(
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Center(
             child: Column(
               children: [
-                CurrentWeather(),
-                TodaysWeather(),
-                UpcomingWeather(),
+                Expanded(flex: 4, child: CurrentWeather()),
+                Expanded(flex: 1, child: TodaysWeather()),
+                Expanded(flex: 3, child: UpcomingWeather()),
               ],
             ),
           ),

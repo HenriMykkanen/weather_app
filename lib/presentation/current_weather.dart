@@ -12,34 +12,33 @@ class CurrentWeather extends ConsumerWidget {
     final weatherToday = ref.watch(forecastProvider);
     return weatherToday.when(
       data: (data) {
-        return Expanded(
-          child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: colors(context).color2!),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              width: double.infinity,
-              height: 192,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    city,
-                    style: Theme.of(context).textTheme.displayLarge,
-                  ),
-                  CachedNetworkImage(
-                      placeholder: (context, url) =>
-                          CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                      imageUrl:
-                          "http://openweathermap.org/img/wn/${data.weatherIcon}@2x.png"),
-                  Text(
-                    '${data.temperature}\u2103',
-                    style: Theme.of(context).textTheme.displayMedium,
-                  ),
-                ],
-              )),
-        );
+        return Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: colors(context).color2!),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            width: double.infinity,
+            height: 192,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  city,
+                  style: Theme.of(context).textTheme.displayLarge,
+                ),
+                CachedNetworkImage(
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                    imageUrl:
+                        "http://openweathermap.org/img/wn/${data.weatherIcon}@2x.png"),
+                Text(
+                  '${data.temperature}\u2103',
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+              ],
+            ));
       },
       loading: () => const Center(
         child: CircularProgressIndicator(),
