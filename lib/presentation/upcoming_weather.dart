@@ -23,10 +23,6 @@ class UpcomingWeather extends ConsumerWidget {
                 return Container(
                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   padding: const EdgeInsets.all(0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: colors(context).color2!),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
                   child: Row(
                     children: [
                       Expanded(
@@ -66,10 +62,6 @@ class UpcomingWeather extends ConsumerWidget {
                 return Container(
                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   padding: const EdgeInsets.all(0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: colors(context).color2!),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
                   child: Row(
                     children: [
                       Expanded(

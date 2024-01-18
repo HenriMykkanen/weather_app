@@ -13,27 +13,15 @@ final forecastProvider = FutureProvider<Forecast>((ref) async {
   return forecast;
 });
 
-final longitudeProvider = StateProvider<double>((ref) {
-  return 27.677;
-});
-
-final latitudeProvider = StateProvider<double>((ref) {
-  return 62.8924;
-});
-
-// final forecastFiveDaysProvider = FutureProvider<Forecast>((ref) async {
-//   final lon = ref.watch(longitudeProvider);
-//   final lat = ref.watch(latitudeProvider);
-//   final forecast = await ref
-//       .watch(forecastRepositoryProvider)
-//       .getForecastFiveDays(lon: lon, lat: lat);
-//   return forecast;
-// });
-
 final forecastFiveDaysProvider = FutureProvider<ForecastList>((ref) async {
   final city = ref.watch(cityProvider);
   final forecast = await ref
       .watch(forecastRepositoryProvider)
       .getForecastFiveDays(city: city);
   return forecast;
+});
+
+final defaultCityProvider = StateProvider<String>((ref) {
+  var defaultCity = 'Kuopio';
+  return defaultCity;
 });

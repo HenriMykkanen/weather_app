@@ -13,10 +13,6 @@ class CurrentWeather extends ConsumerWidget {
     return weatherToday.when(
       data: (data) {
         return Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: colors(context).color2!),
-              borderRadius: BorderRadius.circular(8),
-            ),
             width: double.infinity,
             height: 192,
             child: Column(
