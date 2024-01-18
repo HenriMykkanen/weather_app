@@ -20,7 +20,7 @@ class CurrentWeather extends ConsumerWidget {
             width: double.infinity,
             height: 192,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
                   city,

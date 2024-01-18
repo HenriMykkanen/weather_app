@@ -22,6 +22,9 @@ class Forecast {
   final String weatherIcon;
   final String weatherType;
 
+  //TODO: Min and max temperature currently don't work like supposed to,
+  //they return min and max temperature in the city right at that moment
+  //Make something that calculates min and max of a given day if you want to bother
   factory Forecast.fromJSON(Map<String, dynamic> data) {
     final timestamp = data['dt'] as int;
     final time = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);

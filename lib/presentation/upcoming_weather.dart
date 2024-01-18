@@ -55,7 +55,7 @@ class UpcomingWeather extends ConsumerWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                              '${firstItem.temperatureMin}\u2103/${firstItem.temperatureMin}\u2103',
+                              '${firstItem.temperatureMax}\u2103/${firstItem.temperatureMin}\u2103',
                               style: Theme.of(context).textTheme.displaySmall),
                         ),
                       ),
@@ -98,7 +98,7 @@ class UpcomingWeather extends ConsumerWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                              '${weatherObject.temperatureMin}\u2103/${weatherObject.temperatureMin}\u2103',
+                              '${weatherObject.temperatureMax}\u2103/${weatherObject.temperatureMin}\u2103',
                               style: Theme.of(context).textTheme.displaySmall),
                         ),
                       ),
