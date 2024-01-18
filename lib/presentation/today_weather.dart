@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/application/providers.dart';
 import 'package:weather_app/constants/theme.dart';
-import 'package:weather_app/domain/forecast/forecast.dart';
 
 class TodaysWeather extends ConsumerWidget {
   const TodaysWeather({super.key});

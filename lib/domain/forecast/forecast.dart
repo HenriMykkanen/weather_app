@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 class Forecast {
   Forecast({
     required this.time,
+    required this.date,
     required this.temperature,
     required this.temperatureMin,
     required this.temperatureMax,
@@ -12,23 +13,26 @@ class Forecast {
   });
 
   final String time;
-  final double temperature;
-  final double temperatureMin;
-  final double temperatureMax;
+  final String date;
+  final int temperature;
+  final int temperatureMin;
+  final int temperatureMax;
   final String weatherType;
 
   factory Forecast.fromJSON(Map<String, dynamic> data) {
     final timestamp = data['dt'] as int;
     final time = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
     final formattedTime = DateFormat.Hm().format(time); // Format to "18:00"
+    final formattedDate = DateFormat('dd/MM').format(time); // Format to "30/08"
 
-    final temperature = data['main']['temp'].toDouble();
-    final temperatureMin = data['main']['temp_min'].toDouble();
-    final temperatureMax = data['main']['temp_max'].toDouble();
+    final temperature = (data['main']['temp'] as num).toInt().round();
+    final temperatureMin = (data['main']['temp_min'] as num).toInt().round();
+    final temperatureMax = (data['main']['temp_max'] as num).toInt().round();
 
     final weatherType = data['weather'][0]['main'] as String;
     return Forecast(
       time: formattedTime,
+      date: formattedDate,
       temperature: temperature,
       temperatureMin: temperatureMin,
       temperatureMax: temperatureMax,
