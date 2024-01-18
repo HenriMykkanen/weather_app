@@ -29,14 +29,36 @@ final GoRouter _router = GoRouter(
       routes: <RouteBase>[
         GoRoute(
           path: '/a',
-          builder: (BuildContext context, GoRouterState state) {
-            return const HomeScreen();
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: const HomeScreen(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(
+                  opacity: CurveTween(curve: Curves.easeInOutCirc)
+                      .animate(animation),
+                  child: child,
+                );
+              },
+            );
           },
         ),
         GoRoute(
           path: '/b',
-          builder: (BuildContext context, GoRouterState state) {
-            return SearchScreen();
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: SearchScreen(),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(
+                  opacity: CurveTween(curve: Curves.easeInOutCirc)
+                      .animate(animation),
+                  child: child,
+                );
+              },
+            );
           },
         ),
       ],
