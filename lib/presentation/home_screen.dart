@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weather_app/presentation/current_weather.dart';
+import 'package:weather_app/presentation/current_weather_display.dart';
 import 'package:weather_app/presentation/today_weather.dart';
 import 'package:weather_app/presentation/upcoming_weather.dart';
 
@@ -25,7 +25,7 @@ class HomeScreen extends ConsumerWidget {
                       alignment: Alignment.centerRight,
                       child: Icon(Icons.settings)),
                 ),
-                Expanded(flex: 3, child: CurrentWeather()),
+                Expanded(flex: 3, child: CurrentWeatherDisplay()),
                 Expanded(flex: 2, child: TodaysWeather()),
                 Expanded(flex: 3, child: UpcomingWeather()),
               ],

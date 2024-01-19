@@ -4,12 +4,12 @@ import 'package:weather_app/application/providers.dart';
 import 'package:weather_app/constants/theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class CurrentWeather extends ConsumerWidget {
-  const CurrentWeather({super.key});
+class CurrentWeatherDisplay extends ConsumerWidget {
+  const CurrentWeatherDisplay({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final city = ref.watch(cityProvider);
-    final weatherToday = ref.watch(forecastProvider);
+    final weatherToday = ref.watch(currentWeatherProvider);
     return weatherToday.when(
       data: (data) {
         return Container(
@@ -27,10 +27,9 @@ class CurrentWeather extends ConsumerWidget {
                         const CircularProgressIndicator(),
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
-                    imageUrl:
-                        "http://openweathermap.org/img/wn/${data.weatherIcon}@2x.png"),
+                    imageUrl: 'https:${data.currentWeather.weatherIconURL}'),
                 Text(
-                  '${data.temperature}\u2103',
+                  '${data.currentTemperature}\u2103',
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
               ],
