@@ -5,11 +5,13 @@ import 'package:intl/intl.dart';
 import 'package:weather_app/application/providers.dart';
 
 class UpcomingWeather extends ConsumerWidget {
-  const UpcomingWeather({super.key});
+  const UpcomingWeather({super.key, required this.cityProvider});
+  final StateProvider cityProvider;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final upcomingWeather = ref.watch(forecastFiveDaysProvider);
+    final city = ref.watch(cityProvider);
+    final upcomingWeather = ref.watch(forecastFiveDaysProvider(city));
     return upcomingWeather.when(
       data: (data) {
         return ListView.builder(

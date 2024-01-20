@@ -4,11 +4,13 @@ import 'package:weather_app/application/providers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class CurrentWeatherDisplay extends ConsumerWidget {
-  const CurrentWeatherDisplay({super.key});
+  const CurrentWeatherDisplay({super.key, required this.cityProvider});
+  final StateProvider cityProvider;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final city = ref.watch(defaultCityProvider);
-    final weatherToday = ref.watch(currentWeatherProvider);
+    final city = ref.watch(cityProvider);
+    final weatherToday = ref.watch(currentWeatherProvider(city));
     return weatherToday.when(
       data: (data) {
         return Container(

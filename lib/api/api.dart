@@ -5,7 +5,7 @@ class WeatherMapAPI {
   static const String _apiBaseUrl = "api.weatherapi.com";
   static const String _apiPath = "/v1/";
 
-  Uri forecastNow(city) => _buildUri(
+  Uri forecast(city) => _buildUri(
         endpoint: "forecast.json",
         parametersBuilder: () => cityQueryParameters(city),
       );

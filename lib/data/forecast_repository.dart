@@ -17,17 +17,17 @@ class HttpForecastRepositoryNew {
   final http.Client client;
 
   Future<CurrentWeather> getCurrentWeather({required String city}) => _getData(
-      uri: api.forecastNow(city),
+      uri: api.forecast(city),
       builder: (data) => CurrentWeather.fromJSON(data));
 
   Future<ForecastDay> getForecastDay({required String city}) => _getData(
-        uri: api.forecastNow(city),
+        uri: api.forecast(city),
         builder: (data) => ForecastDay.fromJSON(data, 0),
       );
 
   Future<ForecastFiveDays> getForecastFiveDays({required String city}) =>
       _getData(
-          uri: api.forecastNow(city),
+          uri: api.forecast(city),
           builder: ((data) => ForecastFiveDays.fromJSON(data)));
 
   Future<GenericType> _getData<GenericType>({

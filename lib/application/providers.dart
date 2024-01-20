@@ -8,29 +8,29 @@ final defaultCityProvider = StateProvider<String>((ref) {
   return 'Kuopio';
 });
 
-final currentWeatherProvider = FutureProvider<CurrentWeather>((ref) async {
-  final city = ref.watch(defaultCityProvider);
+final customCityProvider = StateProvider<String>((ref) {
+  String customCity = '';
+  return customCity;
+});
+
+final currentWeatherProvider =
+    FutureProvider.family<CurrentWeather, String>((ref, city) async {
   final currentWeather =
       await ref.watch(forecastRepositoryProvider).getCurrentWeather(city: city);
   return currentWeather;
 });
 
-final forecastDayProvider = FutureProvider<ForecastDay>((ref) async {
-  final city = ref.watch(defaultCityProvider);
+final forecastDayProvider =
+    FutureProvider.family<ForecastDay, String>((ref, city) async {
   final forecastDay =
       await ref.watch(forecastRepositoryProvider).getForecastDay(city: city);
   return forecastDay;
 });
 
-final forecastFiveDaysProvider = FutureProvider<ForecastFiveDays>((ref) async {
-  final city = ref.watch(defaultCityProvider);
+final forecastFiveDaysProvider =
+    FutureProvider.family<ForecastFiveDays, String>((ref, city) async {
   final forecastFiveDays = await ref
       .watch(forecastRepositoryProvider)
       .getForecastFiveDays(city: city);
   return forecastFiveDays;
-});
-
-final defaultdefaultCityProvider = StateProvider<String>((ref) {
-  var defaultCity = 'Kuopio';
-  return defaultCity;
 });

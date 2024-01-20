@@ -6,11 +6,13 @@ import 'package:weather_app/constants/theme.dart';
 import 'package:intl/intl.dart';
 
 class TodaysWeather extends ConsumerWidget {
-  const TodaysWeather({super.key});
+  const TodaysWeather({super.key, required this.cityProvider});
+  final StateProvider cityProvider;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final weatherToday = ref.watch(forecastDayProvider);
+    final city = ref.watch(cityProvider);
+    final weatherToday = ref.watch(forecastDayProvider(city));
     return weatherToday.when(
         data: (data) {
           return Container(

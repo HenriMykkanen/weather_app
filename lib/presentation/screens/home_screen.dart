@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:weather_app/presentation/displays/current_weather_display.dart';
 import 'package:weather_app/presentation/displays/forecast_today_display.dart';
 import 'package:weather_app/presentation/displays/upcoming_forecast_display.dart';
+import 'package:weather_app/application/providers.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -25,9 +26,20 @@ class HomeScreen extends ConsumerWidget {
                       alignment: Alignment.centerRight,
                       child: Icon(Icons.settings)),
                 ),
-                Expanded(flex: 3, child: CurrentWeatherDisplay()),
-                Expanded(flex: 2, child: TodaysWeather()),
-                Expanded(flex: 3, child: UpcomingWeather()),
+                Expanded(
+                    flex: 3,
+                    child: CurrentWeatherDisplay(
+                        cityProvider: defaultCityProvider)),
+                Expanded(
+                    flex: 2,
+                    child: TodaysWeather(
+                      cityProvider: defaultCityProvider,
+                    )),
+                Expanded(
+                    flex: 3,
+                    child: UpcomingWeather(
+                      cityProvider: defaultCityProvider,
+                    )),
               ],
             ),
           ),
