@@ -1,20 +1,12 @@
-// API Docs:
-// https://openweathermap.org/forecast5
-
-class OpenWeatherMapAPI {
-  OpenWeatherMapAPI(this.apiKey);
+class WeatherMapAPI {
+  WeatherMapAPI(this.apiKey);
   final String apiKey;
 
-  static const String _apiBaseUrl = "api.openweathermap.org";
-  static const String _apiPath = "/data/2.5/";
+  static const String _apiBaseUrl = "api.weatherapi.com";
+  static const String _apiPath = "/v1/";
 
-  Uri forecastNow(String city) => _buildUri(
-        endpoint: "weather",
-        parametersBuilder: () => cityQueryParameters(city),
-      );
-
-  Uri forecastFiveDays(city) => _buildUri(
-        endpoint: "forecast",
+  Uri forecastNow(city) => _buildUri(
+        endpoint: "forecast.json",
         parametersBuilder: () => cityQueryParameters(city),
       );
 
@@ -31,8 +23,10 @@ class OpenWeatherMapAPI {
   }
 
   Map<String, dynamic> cityQueryParameters(String city) => {
+        "key": apiKey,
         "q": city,
-        "appid": apiKey,
-        "units": "metric",
+        "days": "5",
+        "aqi": "no",
+        "alerts": "no",
       };
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/application/providers.dart';
-import 'package:weather_app/constants/theme.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class CurrentWeatherDisplay extends ConsumerWidget {

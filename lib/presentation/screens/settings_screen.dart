@@ -65,34 +65,35 @@ void _editDefaultCity(BuildContext context, WidgetRef ref) {
   final defaultCityController =
       TextEditingController(text: ref.read(cityProvider));
   showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(
-            'Edit Default City',
-            style: TextStyle(color: colors(context).color2),
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(
+          'Edit Default City',
+          style: TextStyle(color: colors(context).color2),
+        ),
+        content: TextField(
+          controller: defaultCityController,
+          style: TextStyle(color: colors(context).color2),
+          decoration: const InputDecoration(labelText: 'Enter default city'),
+        ),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Cancel'),
           ),
-          content: TextField(
-            controller: defaultCityController,
-            style: TextStyle(color: colors(context).color2),
-            decoration: const InputDecoration(labelText: 'Enter default city'),
+          TextButton(
+            onPressed: () {
+              ref.read(cityProvider.notifier).state =
+                  defaultCityController.text;
+              Navigator.of(context).pop();
+            },
+            child: const Text('Save'),
           ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                ref.read(cityProvider.notifier).state =
-                    defaultCityController.text;
-                Navigator.of(context).pop();
-              },
-              child: const Text('Save'),
-            ),
-          ],
-        );
-      });
+        ],
+      );
+    },
+  );
 }

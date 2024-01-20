@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/application/providers.dart';
-import 'package:weather_app/constants/theme.dart';
-import 'package:weather_app/domain/forecast/forecast.dart';
 
 class UpcomingWeather extends ConsumerWidget {
   const UpcomingWeather({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final upcomingWeather = ref.watch(forecastFiveDaysProviderNew);
+    final upcomingWeather = ref.watch(forecastFiveDaysProvider);
     return upcomingWeather.when(
       data: (data) {
         return ListView.builder(

@@ -1,25 +1,34 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:weather_app/api/api.dart';
 import 'package:weather_app/api/api_keys.dart';
+import 'package:weather_app/api/api.dart';
 import 'package:weather_app/data/api_exception.dart';
-import 'package:weather_app/domain/forecast/forecast.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:weather_app/domain/current_weather.dart';
+import 'package:weather_app/domain/forecast_day.dart';
+import 'package:weather_app/domain/forecast_five_days.dart';
 
 // https://codewithandrea.com/articles/flutter-repository-pattern/
 
-class HttpForecastRepository {
-  HttpForecastRepository({required this.api, required this.client});
-  final OpenWeatherMapAPI api;
+class HttpForecastRepositoryNew {
+  HttpForecastRepositoryNew({required this.api, required this.client});
+  final WeatherMapAPI api;
   final http.Client client;
 
-  Future<Forecast> getForecastList({required String city}) => _getData(
-      uri: api.forecastNow(city), builder: (data) => Forecast.fromJSON(data));
+  Future<CurrentWeather> getCurrentWeather({required String city}) => _getData(
+      uri: api.forecastNow(city),
+      builder: (data) => CurrentWeather.fromJSON(data));
 
-  Future<ForecastList> getForecastFiveDays({required String city}) => _getData(
-      uri: api.forecastFiveDays(city),
-      builder: (data) => ForecastList.fromJSON(data));
+  Future<ForecastDay> getForecastDay({required String city}) => _getData(
+        uri: api.forecastNow(city),
+        builder: (data) => ForecastDay.fromJSON(data, 0),
+      );
+
+  Future<ForecastFiveDays> getForecastFiveDays({required String city}) =>
+      _getData(
+          uri: api.forecastNow(city),
+          builder: ((data) => ForecastFiveDays.fromJSON(data)));
 
   Future<GenericType> _getData<GenericType>({
     required Uri uri,
@@ -27,7 +36,10 @@ class HttpForecastRepository {
   }) async {
     try {
       final response = await client.get(uri);
-      // print(response);
+      print(uri);
+      print(response);
+      print(response.statusCode);
+      print(response.body);
       switch (response.statusCode) {
         case 200: // 200 OK - Indicates that the request has succeeded
           final data = json.decode(response.body);
@@ -46,16 +58,11 @@ class HttpForecastRepository {
   }
 }
 
-// Using String.fromEnvironment allows you to retrieve the API key
-// from environment variables. Environment variables are external
-// configurations that can be set differently depending on the environment
-// (e.g., development, testing, production).
-// This separation ensures that each environment uses its own specific API key.
-final forecastRepositoryProvider = Provider<HttpForecastRepository>((ref) {
-  const apiKey = String.fromEnvironment('API_KEY',
-      defaultValue: APIKeys.openWeatherAPIKey);
-  return HttpForecastRepository(
-    api: OpenWeatherMapAPI(apiKey),
+final forecastRepositoryProvider = Provider<HttpForecastRepositoryNew>((ref) {
+  const apiKey =
+      String.fromEnvironment('API_KEY', defaultValue: APIKeys.weatherAPIkey);
+  return HttpForecastRepositoryNew(
+    api: WeatherMapAPI(apiKey),
     client: http.Client(),
   );
 });
