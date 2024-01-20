@@ -36,10 +36,6 @@ class HttpForecastRepositoryNew {
   }) async {
     try {
       final response = await client.get(uri);
-      print(uri);
-      print(response);
-      print(response.statusCode);
-      print(response.body);
       switch (response.statusCode) {
         case 200: // 200 OK - Indicates that the request has succeeded
           final data = json.decode(response.body);

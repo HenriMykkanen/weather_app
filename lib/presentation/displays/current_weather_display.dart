@@ -13,9 +13,8 @@ class CurrentWeatherDisplay extends ConsumerWidget {
     final weatherToday = ref.watch(currentWeatherProvider(city));
     return weatherToday.when(
       data: (data) {
-        return Container(
+        return SizedBox(
             width: double.infinity,
-            height: 192,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
