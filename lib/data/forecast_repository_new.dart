@@ -22,8 +22,13 @@ class HttpForecastRepositoryNew {
 
   Future<ForecastDay> getForecastDay({required String city}) => _getData(
         uri: api.forecastNow(city),
-        builder: (data) => ForecastDay.fromJSON(data),
+        builder: (data) => ForecastDay.fromJSON(data, 0),
       );
+
+  Future<ForecastFiveDays> getForecastFiveDays({required String city}) =>
+      _getData(
+          uri: api.forecastNow(city),
+          builder: ((data) => ForecastFiveDays.fromJSON(data)));
 
   Future<GenericType> _getData<GenericType>({
     required Uri uri,

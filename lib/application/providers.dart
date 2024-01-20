@@ -30,6 +30,15 @@ final forecastDayProvider = FutureProvider<ForecastDay>((ref) async {
   return forecastDay;
 });
 
+final forecastFiveDaysProviderNew =
+    FutureProvider<ForecastFiveDays>((ref) async {
+  final city = ref.watch(cityProvider);
+  final forecastFiveDays = await ref
+      .watch(forecastRepositoryProviderNew)
+      .getForecastFiveDays(city: city);
+  return forecastFiveDays;
+});
+
 final forecastFiveDaysProvider = FutureProvider<ForecastList>((ref) async {
   final city = ref.watch(cityProvider);
   final forecast = await ref

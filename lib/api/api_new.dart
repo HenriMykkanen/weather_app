@@ -25,7 +25,7 @@ class WeatherMapAPI {
   Map<String, dynamic> cityQueryParameters(String city) => {
         "key": apiKey,
         "q": city,
-        "days": "2",
+        "days": "5",
         "aqi": "no",
         "alerts": "no",
       };

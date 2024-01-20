@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:weather_app/application/providers.dart';
 import 'package:weather_app/constants/theme.dart';
 import 'package:weather_app/domain/forecast/forecast.dart';
@@ -10,16 +11,13 @@ class UpcomingWeather extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final upcomingWeather = ref.watch(forecastFiveDaysProvider);
+    final upcomingWeather = ref.watch(forecastFiveDaysProviderNew);
     return upcomingWeather.when(
       data: (data) {
         return ListView.builder(
-            itemCount: (data.list.length / 8).ceil(),
+            itemCount: (data.forecastFiveDays.length),
             itemBuilder: (context, index) {
-              final int targetIndex = index * 8;
-              final weatherObject = data.list[targetIndex];
               if (index == 0) {
-                Forecast firstItem = data.list[0];
                 return Container(
                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   padding: const EdgeInsets.all(0),
@@ -29,7 +27,8 @@ class UpcomingWeather extends ConsumerWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            firstItem.date,
+                            DateFormat('dd/MM')
+                                .format(data.forecastFiveDays[0].date),
                             style: Theme.of(context).textTheme.displaySmall,
                           ),
                         ),
@@ -42,7 +41,7 @@ class UpcomingWeather extends ConsumerWidget {
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
                           imageUrl:
-                              "http://openweathermap.org/img/wn/${weatherObject.weatherIcon}@2x.png",
+                              'https:${data.forecastFiveDays[0].weather.weatherIconURL}',
                           width: 48,
                           height: 48,
                         ),
@@ -51,7 +50,7 @@ class UpcomingWeather extends ConsumerWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                              '${firstItem.temperatureMax}\u2103/${firstItem.temperatureMin}\u2103',
+                              '${data.forecastFiveDays[0].temperatureMax}\u2103/${data.forecastFiveDays[0].temperatureMin}\u2103',
                               style: Theme.of(context).textTheme.displaySmall),
                         ),
                       ),
@@ -68,7 +67,8 @@ class UpcomingWeather extends ConsumerWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            weatherObject.date,
+                            DateFormat('dd/MM')
+                                .format(data.forecastFiveDays[index].date),
                             style: Theme.of(context).textTheme.displaySmall,
                           ),
                         ),
@@ -81,7 +81,7 @@ class UpcomingWeather extends ConsumerWidget {
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
                           imageUrl:
-                              "http://openweathermap.org/img/wn/${weatherObject.weatherIcon}@2x.png",
+                              'https:${data.forecastFiveDays[index].weather.weatherIconURL}',
                           width: 48,
                           height: 48,
                         ),
@@ -90,7 +90,7 @@ class UpcomingWeather extends ConsumerWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                              '${weatherObject.temperatureMax}\u2103/${weatherObject.temperatureMin}\u2103',
+                              '${data.forecastFiveDays[index].temperatureMax}\u2103/${data.forecastFiveDays[index].temperatureMin}\u2103',
                               style: Theme.of(context).textTheme.displaySmall),
                         ),
                       ),

@@ -52,25 +52,25 @@ class ForecastDay {
   final Weather weather;
   final List<ForecastHour> forecastByHour;
 
-  factory ForecastDay.fromJSON(Map<String, dynamic> json) {
+  factory ForecastDay.fromJSON(Map<String, dynamic> json, int daysAmount) {
     final date = DateTime.fromMillisecondsSinceEpoch(
-        json['forecast']['forecastday'][0]['date_epoch'] * 1000);
+        json['forecast']['forecastday'][daysAmount]['date_epoch'] * 1000);
     final temperatureMax =
-        (json['forecast']['forecastday'][0]['day']['maxtemp_c'] as num)
+        (json['forecast']['forecastday'][daysAmount]['day']['maxtemp_c'] as num)
             .toInt()
             .round();
     final temperatureMin =
-        (json['forecast']['forecastday'][0]['day']['mintemp_c'] as num)
+        (json['forecast']['forecastday'][daysAmount]['day']['mintemp_c'] as num)
             .toInt()
             .round();
     final weatherType =
-        json['forecast']['forecastday'][0]['day']['condition']['text'];
+        json['forecast']['forecastday'][daysAmount]['day']['condition']['text'];
     final weatherIconURL =
-        json['forecast']['forecastday'][0]['day']['condition']['icon'];
+        json['forecast']['forecastday'][daysAmount]['day']['condition']['icon'];
     final weather = Weather(
         time: date, weatherType: weatherType, weatherIconURL: weatherIconURL);
     final jsonAsDynamicList =
-        json['forecast']['forecastday'][0]['hour'] as List<dynamic>;
+        json['forecast']['forecastday'][daysAmount]['hour'] as List<dynamic>;
     final forecastByHour = jsonAsDynamicList
         .map(
           (e) => ForecastHour.fromJSON(e),
@@ -105,5 +105,18 @@ class ForecastHour {
       temperature: temperature,
       weather: weather,
     );
+  }
+}
+
+class ForecastFiveDays {
+  ForecastFiveDays(this.forecastFiveDays);
+
+  final List<ForecastDay> forecastFiveDays;
+
+  factory ForecastFiveDays.fromJSON(Map<String, dynamic> json) {
+    // Calls the ForecastDay.fromJSON 5 times and passes the index from here to the ForecastDay.fromJSON method
+    final forecastdays =
+        List.generate(5, (index) => ForecastDay.fromJSON(json, index));
+    return ForecastFiveDays(forecastdays);
   }
 }
