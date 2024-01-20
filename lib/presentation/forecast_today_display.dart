@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/application/providers.dart';
 import 'package:weather_app/constants/theme.dart';
+import 'package:intl/intl.dart';
 
 class TodaysWeather extends ConsumerWidget {
   const TodaysWeather({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final weatherToday = ref.watch(forecastFiveDaysProvider);
+    final weatherToday = ref.watch(forecastDayProvider);
     return weatherToday.when(
         data: (data) {
           return Container(
             width: double.infinity,
             child: ListView.builder(
-              itemCount: 9,
+              itemCount: data.forecastByHour.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                final weatherObject = data.list[index];
                 return Container(
                   width: 96,
                   color: colors(context).color1,
@@ -26,7 +26,7 @@ class TodaysWeather extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        weatherObject.time,
+                        DateFormat.Hm().format(data.forecastByHour[index].time),
                         style: Theme.of(context).textTheme.displaySmall,
                       ),
                       CachedNetworkImage(
@@ -35,12 +35,12 @@ class TodaysWeather extends ConsumerWidget {
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
                         imageUrl:
-                            "http://openweathermap.org/img/wn/${weatherObject.weatherIcon}@2x.png",
+                            'https:${data.forecastByHour[index].weather.weatherIconURL}',
                         width: 48,
                         height: 48,
                       ),
                       Text(
-                        '${weatherObject.temperature}\u2103',
+                        '${data.forecastByHour[index].temperature}\u2103',
                         style: Theme.of(context).textTheme.displaySmall,
                       )
                     ],

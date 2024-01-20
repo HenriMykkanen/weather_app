@@ -20,6 +20,11 @@ class HttpForecastRepositoryNew {
       uri: api.forecastNow(city),
       builder: (data) => CurrentWeather.fromJSON(data));
 
+  Future<ForecastDay> getForecastDay({required String city}) => _getData(
+        uri: api.forecastNow(city),
+        builder: (data) => ForecastDay.fromJSON(data),
+      );
+
   Future<GenericType> _getData<GenericType>({
     required Uri uri,
     required GenericType Function(dynamic data) builder,
