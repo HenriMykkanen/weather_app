@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weather_app/presentation/current_weather_display.dart';
-import 'package:weather_app/presentation/forecast_today_display.dart';
-import 'package:weather_app/presentation/upcoming_forecast_display.dart';
+import 'package:weather_app/presentation/displays/current_weather_display.dart';
+import 'package:weather_app/presentation/displays/forecast_today_display.dart';
+import 'package:weather_app/presentation/displays/upcoming_forecast_display.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});

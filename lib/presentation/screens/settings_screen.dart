@@ -3,14 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:weather_app/application/providers.dart';
 import 'package:weather_app/constants/theme.dart';
+import 'package:weather_app/presentation/controllers/default_city_controller.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
+  void _editDefaultCity(BuildContext context, WidgetRef ref) {
+    DefaultCityController.showEditDialog(context, ref);
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDarkTheme = ref.watch(appThemeProvider);
-    final defaultCity = ref.watch(cityProvider);
+    final defaultCity = ref.watch(defaultCityProvider);
     return SafeArea(
       child: Scaffold(
         body: Center(
@@ -59,41 +64,4 @@ class SettingsScreen extends ConsumerWidget {
       ),
     );
   }
-}
-
-void _editDefaultCity(BuildContext context, WidgetRef ref) {
-  final defaultCityController =
-      TextEditingController(text: ref.read(cityProvider));
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text(
-          'Edit Default City',
-          style: TextStyle(color: colors(context).color2),
-        ),
-        content: TextField(
-          controller: defaultCityController,
-          style: TextStyle(color: colors(context).color2),
-          decoration: const InputDecoration(labelText: 'Enter default city'),
-        ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              ref.read(cityProvider.notifier).state =
-                  defaultCityController.text;
-              Navigator.of(context).pop();
-            },
-            child: const Text('Save'),
-          ),
-        ],
-      );
-    },
-  );
 }

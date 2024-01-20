@@ -7,7 +7,7 @@ class CurrentWeatherDisplay extends ConsumerWidget {
   const CurrentWeatherDisplay({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final city = ref.watch(cityProvider);
+    final city = ref.watch(defaultCityProvider);
     final weatherToday = ref.watch(currentWeatherProvider);
     return weatherToday.when(
       data: (data) {
