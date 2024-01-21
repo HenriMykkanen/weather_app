@@ -14,32 +14,44 @@ class HomeScreen extends ConsumerWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Center(
-            child: Column(
+            child: Stack(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    GoRouter.of(context).go('/c');
-                  },
-                  child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Icon(Icons.settings)),
+                SingleChildScrollView(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: Column(
+                      children: [
+                        Expanded(
+                            flex: 3,
+                            child: CurrentWeatherDisplay(
+                                cityProvider: defaultCityProvider)),
+                        Expanded(
+                            flex: 2,
+                            child: TodaysWeather(
+                              cityProvider: defaultCityProvider,
+                            )),
+                        Expanded(
+                          flex: 3,
+                          child: UpcomingWeather(
+                            cityProvider: defaultCityProvider,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                Expanded(
-                    flex: 3,
-                    child: CurrentWeatherDisplay(
-                        cityProvider: defaultCityProvider)),
-                Expanded(
-                    flex: 2,
-                    child: TodaysWeather(
-                      cityProvider: defaultCityProvider,
-                    )),
-                Expanded(
-                    flex: 3,
-                    child: UpcomingWeather(
-                      cityProvider: defaultCityProvider,
-                    )),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).go('/c');
+                    },
+                    child: Icon(Icons.settings),
+                  ),
+                )
               ],
             ),
           ),

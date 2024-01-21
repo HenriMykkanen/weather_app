@@ -34,23 +34,28 @@ class SearchScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(8.0),
         child: Center(
           // TODO: These widgets should not try to render before a search has been made
-          child: Column(children: [
-            Expanded(
-                flex: 3,
-                child: CurrentWeatherDisplay(
-                  cityProvider: customCityProvider,
-                )),
-            Expanded(
-                flex: 2,
-                child: TodaysWeather(
-                  cityProvider: customCityProvider,
-                )),
-            Expanded(
-                flex: 3,
-                child: UpcomingWeather(
-                  cityProvider: customCityProvider,
-                )),
-          ]),
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              child: Column(children: [
+                Expanded(
+                    flex: 3,
+                    child: CurrentWeatherDisplay(
+                      cityProvider: customCityProvider,
+                    )),
+                Expanded(
+                    flex: 2,
+                    child: TodaysWeather(
+                      cityProvider: customCityProvider,
+                    )),
+                Expanded(
+                    flex: 3,
+                    child: UpcomingWeather(
+                      cityProvider: customCityProvider,
+                    )),
+              ]),
+            ),
+          ),
         ),
       ),
     ));

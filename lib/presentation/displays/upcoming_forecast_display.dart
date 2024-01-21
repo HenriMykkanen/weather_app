@@ -12,99 +12,55 @@ class UpcomingWeather extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final city = ref.watch(cityProvider);
     final upcomingWeather = ref.watch(forecastFiveDaysProvider(city));
-    // TODO: Turn this whole thing into a Column so the whole widget tree can be wrapped into a SingleChildScrollview
-    // This one keeps overflowing depending on font sizes
     return upcomingWeather.when(
       data: (data) {
-        return SizedBox(
-          width: double.infinity,
-          child: ListView.builder(
-              itemCount: (data.forecastFiveDays.length),
-              itemBuilder: (context, index) {
-                if (index == 0) {
-                  return Container(
-                    margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    padding: const EdgeInsets.all(0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              DateFormat('dd/MM')
-                                  .format(data.forecastFiveDays[0].date),
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
+        return Column(
+          children: [
+            ...data.forecastFiveDays.asMap().entries.map(
+              (index) {
+                return Expanded(
+                    child: Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  padding: const EdgeInsets.all(0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            DateFormat('dd/MM')
+                                .format(data.forecastFiveDays[index.key].date),
+                            style: Theme.of(context).textTheme.displaySmall,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          child: CachedNetworkImage(
-                            placeholder: (context, url) =>
-                                const CircularProgressIndicator(),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                            imageUrl:
-                                'https:${data.forecastFiveDays[0].weather.weatherIconURL}',
-                            width: 48,
-                            height: 48,
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        child: CachedNetworkImage(
+                          placeholder: (context, url) =>
+                              const CircularProgressIndicator(),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                          imageUrl:
+                              'https:${data.forecastFiveDays[index.key].weather.weatherIconURL}',
+                          width: 48,
+                          height: 48,
                         ),
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                                '${data.forecastFiveDays[0].temperatureMax}\u2103/${data.forecastFiveDays[0].temperatureMin}\u2103',
-                                style:
-                                    Theme.of(context).textTheme.displaySmall),
-                          ),
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                              '${data.forecastFiveDays[index.key].temperatureMax}\u2103/${data.forecastFiveDays[index.key].temperatureMin}\u2103',
+                              style: Theme.of(context).textTheme.displaySmall),
                         ),
-                      ],
-                    ),
-                  );
-                } else {
-                  return Container(
-                    margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    padding: const EdgeInsets.all(0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              DateFormat('dd/MM')
-                                  .format(data.forecastFiveDays[index].date),
-                              style: Theme.of(context).textTheme.displaySmall,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                          child: CachedNetworkImage(
-                            placeholder: (context, url) =>
-                                const CircularProgressIndicator(),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                            imageUrl:
-                                'https:${data.forecastFiveDays[index].weather.weatherIconURL}',
-                            width: 48,
-                            height: 48,
-                          ),
-                        ),
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                                '${data.forecastFiveDays[index].temperatureMax}\u2103/${data.forecastFiveDays[index].temperatureMin}\u2103',
-                                style:
-                                    Theme.of(context).textTheme.displaySmall),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                }
-              }),
+                      ),
+                    ],
+                  ),
+                ));
+              },
+            )
+          ],
         );
       },
       loading: () => const Center(
