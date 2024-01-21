@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/application/providers.dart';
+import 'package:weather_app/constants/theme.dart';
 import 'package:weather_app/presentation/displays/current_weather_display.dart';
 import 'package:app_bar_with_search_switch/app_bar_with_search_switch.dart';
 import 'package:weather_app/presentation/displays/forecast_today_display.dart';
@@ -13,10 +14,14 @@ class SearchScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return SafeArea(
         child: Scaffold(
-      resizeToAvoidBottomInset: true,
       appBar: AppBarWithSearchSwitch(
+        clearOnSubmit: true,
+        keepAppBarColors: false,
+        searchInputDecoration:
+            InputDecoration(hintText: 'Search', border: InputBorder.none),
+        titleTextStyle: TextStyle(color: colors(context).color2, fontSize: 22),
         onSubmitted: (text) {
-          if (text != null && text.isNotEmpty) {
+          if (text.isNotEmpty) {
             ref.read(customCityProvider.notifier).state = text;
           }
         },
