@@ -13,6 +13,11 @@ final customCityProvider = StateProvider<String>((ref) {
   return customCity;
 });
 
+final searchStateProvider = StateProvider<bool>((ref) {
+  bool searchPerformed = false;
+  return searchPerformed;
+});
+
 final currentWeatherProvider =
     FutureProvider.family<CurrentWeather, String>((ref, city) async {
   final currentWeather =
