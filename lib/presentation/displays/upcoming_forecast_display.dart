@@ -23,19 +23,19 @@ class UpcomingWeather extends ConsumerWidget {
                   margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                   padding: const EdgeInsets.all(0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      const Spacer(),
                       Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            DateFormat('dd/MM')
-                                .format(data.forecastFiveDays[index.key].date),
-                            style: Theme.of(context).textTheme.displaySmall,
-                          ),
+                        flex: 2,
+                        child: Text(
+                          DateFormat('dd/MM E')
+                              .format(data.forecastFiveDays[index.key].date),
+                          style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      Expanded(
+                        flex: 1,
                         child: CachedNetworkImage(
                           placeholder: (context, url) =>
                               const CircularProgressIndicator(),
@@ -43,18 +43,19 @@ class UpcomingWeather extends ConsumerWidget {
                               const Icon(Icons.error),
                           imageUrl:
                               'https:${data.forecastFiveDays[index.key].weather.weatherIconURL}',
-                          width: 48,
-                          height: 48,
                         ),
                       ),
                       Expanded(
+                        flex: 2,
                         child: Align(
-                          alignment: Alignment.center,
+                          alignment: Alignment.centerRight,
                           child: Text(
-                              '${data.forecastFiveDays[index.key].temperatureMax}\u2103/${data.forecastFiveDays[index.key].temperatureMin}\u2103',
-                              style: Theme.of(context).textTheme.displaySmall),
+                            '${data.forecastFiveDays[index.key].temperatureMax}\u2103/${data.forecastFiveDays[index.key].temperatureMin}\u2103',
+                            style: Theme.of(context).textTheme.displaySmall,
+                          ),
                         ),
                       ),
+                      const Spacer()
                     ],
                   ),
                 ));
