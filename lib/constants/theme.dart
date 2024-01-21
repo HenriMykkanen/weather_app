@@ -14,15 +14,15 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
   return ThemeData(
     extensions: <ThemeExtension<AppColors>>[
       AppColors(
-        color1: isDarkTheme ? Colors.black : Colors.blueGrey[400],
+        color1: isDarkTheme ? Colors.black : Colors.white,
         color2: isDarkTheme ? Colors.white : Colors.black,
         color3: isDarkTheme ? Colors.yellow : Colors.red,
       ),
     ],
     brightness: isDarkTheme ? Brightness.dark : Brightness.light,
-    scaffoldBackgroundColor: isDarkTheme ? Colors.black : Colors.blueGrey[400],
+    scaffoldBackgroundColor: isDarkTheme ? Colors.black : Colors.white,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: isDarkTheme ? Colors.black87 : Colors.blueGrey[400],
+        backgroundColor: isDarkTheme ? Colors.black87 : Colors.white,
         selectedItemColor: isDarkTheme ? Colors.white70 : Colors.black,
         unselectedItemColor: isDarkTheme ? Colors.white38 : Colors.grey[800]),
     textTheme: Theme.of(context).textTheme.copyWith(
@@ -34,12 +34,12 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
         displayMedium: TextStyle(
           fontSize: 36,
           fontWeight: FontWeight.bold,
-          color: isDarkTheme ? Colors.white60 : Colors.black54,
+          color: isDarkTheme ? Colors.white60 : Colors.black87,
         ),
         displaySmall: TextStyle(
-            fontSize: 14,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: isDarkTheme ? Colors.white60 : Colors.black54)),
+            color: isDarkTheme ? Colors.white60 : Colors.black87)),
   );
 }
 

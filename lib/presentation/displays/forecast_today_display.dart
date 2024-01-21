@@ -24,7 +24,6 @@ class TodaysWeather extends ConsumerWidget {
               itemBuilder: (context, index) {
                 return Container(
                   width: 96,
-                  color: colors(context).color1,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

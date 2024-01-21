@@ -8,7 +8,7 @@ import 'package:weather_app/presentation/displays/forecast_today_display.dart';
 import 'package:weather_app/presentation/displays/upcoming_forecast_display.dart';
 
 class SearchScreen extends ConsumerWidget {
-  SearchScreen({super.key});
+  const SearchScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,7 +18,7 @@ class SearchScreen extends ConsumerWidget {
         clearOnSubmit: true,
         keepAppBarColors: false,
         searchInputDecoration:
-            InputDecoration(hintText: 'Search', border: InputBorder.none),
+            const InputDecoration(hintText: 'Search', border: InputBorder.none),
         titleTextStyle: TextStyle(color: colors(context).color2, fontSize: 22),
         onSubmitted: (text) {
           if (text.isNotEmpty) {
@@ -28,7 +28,12 @@ class SearchScreen extends ConsumerWidget {
         animation: AppBarAnimationSlideLeft.call,
         appBarBuilder: (context) {
           return AppBar(
-            title: Text(('City search')),
+            backgroundColor: colors(context).color1,
+            title: Text(
+              ('City search'),
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
+            iconTheme: IconThemeData(color: colors(context).color2),
             actions: const [
               AppBarSearchButton(),
             ],
