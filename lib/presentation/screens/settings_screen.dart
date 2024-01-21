@@ -24,7 +24,7 @@ class SettingsScreen extends ConsumerWidget {
               settingsListBackground: colors(context).color1,
             ),
             lightTheme: SettingsThemeData(
-                settingsListBackground: colors(context).color1),
+                settingsListBackground: colors(context).color4),
             sections: [
               SettingsSection(
                 title: Text(
@@ -49,7 +49,7 @@ class SettingsScreen extends ConsumerWidget {
                       ref.read(appThemeProvider.notifier).state = value;
                     },
                     initialValue: isDarkTheme,
-                    activeSwitchColor: colors(context).color3,
+                    activeSwitchColor: colors(context).color2,
                     leading: const Icon(Icons.format_paint),
                     title: Text(
                       'Dark theme',

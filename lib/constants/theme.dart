@@ -16,15 +16,19 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
       AppColors(
         color1: isDarkTheme ? Colors.black : Colors.white,
         color2: isDarkTheme ? Colors.white : Colors.black,
-        color3: isDarkTheme ? Colors.yellow : Colors.red,
+        color3: isDarkTheme ? Colors.black : Color.fromARGB(230, 164, 180, 227),
+        color4: isDarkTheme ? Colors.black : Color.fromARGB(255, 230, 164, 180),
       ),
     ],
     brightness: isDarkTheme ? Brightness.dark : Brightness.light,
-    scaffoldBackgroundColor: isDarkTheme ? Colors.black : Colors.white,
+    scaffoldBackgroundColor:
+        isDarkTheme ? Colors.black : Color.fromARGB(155, 255, 248, 227),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: isDarkTheme ? Colors.black87 : Colors.white,
-        selectedItemColor: isDarkTheme ? Colors.white70 : Colors.black,
-        unselectedItemColor: isDarkTheme ? Colors.white38 : Colors.grey[800]),
+        elevation: 128,
+        backgroundColor:
+            isDarkTheme ? Colors.black : Color.fromARGB(255, 230, 164, 180),
+        selectedItemColor: isDarkTheme ? Colors.white : Colors.black,
+        unselectedItemColor: isDarkTheme ? Colors.white54 : Colors.black54),
     textTheme: Theme.of(context).textTheme.copyWith(
         displayLarge: TextStyle(
           fontSize: 48,
@@ -34,12 +38,12 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
         displayMedium: TextStyle(
           fontSize: 36,
           fontWeight: FontWeight.bold,
-          color: isDarkTheme ? Colors.white60 : Colors.black87,
+          color: isDarkTheme ? Colors.white70 : Colors.black87,
         ),
         displaySmall: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: isDarkTheme ? Colors.white60 : Colors.black87)),
+            color: isDarkTheme ? Colors.white70 : Colors.black87)),
   );
 }
 
@@ -48,9 +52,13 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color? color1;
   final Color? color2;
   final Color? color3;
+  final Color? color4;
 
   const AppColors(
-      {required this.color1, required this.color2, required this.color3});
+      {required this.color1,
+      required this.color2,
+      required this.color3,
+      required this.color4});
 
   // In the context of the AppColors class you provided,
   // the copyWith method allows you to create a new instance of AppColors
@@ -61,15 +69,13 @@ class AppColors extends ThemeExtension<AppColors> {
   // and helps ensure that your objects remain immutable,
   // which can have benefits for certain architectural patterns and state management approaches.
   @override
-  AppColors copyWith({
-    Color? color1,
-    Color? color2,
-    Color? color3,
-  }) {
+  AppColors copyWith(
+      {Color? color1, Color? color2, Color? color3, Color? color4}) {
     return AppColors(
       color1: color1 ?? this.color1,
       color2: color2 ?? this.color2,
       color3: color3 ?? this.color3,
+      color4: color4 ?? this.color4,
     );
   }
 
@@ -89,6 +95,7 @@ class AppColors extends ThemeExtension<AppColors> {
       color1: Color.lerp(color1, other.color1, t),
       color2: Color.lerp(color2, other.color2, t),
       color3: Color.lerp(color3, other.color3, t),
+      color4: Color.lerp(color4, other.color4, t),
     );
   }
 }
