@@ -1,3 +1,4 @@
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/application/providers.dart';
@@ -14,7 +15,8 @@ class SearchScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // This is used to see if a search has been performed for conditional rendering of widgets
     bool searchPerformed = ref.watch(searchStateProvider);
-    return SafeArea(
+    return ColorfulSafeArea(
+        color: colors(context).color3!,
         child: Scaffold(
             appBar: AppBarWithSearchSwitch(
               clearOnSubmit: true,

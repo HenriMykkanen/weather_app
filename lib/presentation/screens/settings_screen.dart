@@ -1,3 +1,4 @@
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:settings_ui/settings_ui.dart';
@@ -16,7 +17,8 @@ class SettingsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isDarkTheme = ref.watch(appThemeProvider);
     final defaultCity = ref.watch(defaultCityProvider);
-    return SafeArea(
+    return ColorfulSafeArea(
+      color: colors(context).color4!,
       child: Scaffold(
         body: Center(
           child: SettingsList(

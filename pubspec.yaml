@@ -16,6 +16,7 @@ dependencies:
   cached_network_image: ^3.3.1
   settings_ui: ^2.0.2
   app_bar_with_search_switch: ^1.7.0
+  colorful_safe_area: ^1.0.0
 
 dev_dependencies:
   flutter_test:

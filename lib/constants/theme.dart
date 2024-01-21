@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Theme structure done with heavy inspiration from:
 // https://medium.com/@kinjal.dhamat.sa/light-dark-app-theme-with-custom-color-in-flutter-c686db585f0c
 
-final appThemeProvider = StateProvider<bool>((ref) => true);
+// True = Dark Theme / False = Light Theme
+// Defaults to light theme
+final appThemeProvider = StateProvider<bool>((ref) => false);
 
 // Extension function which we use to access custom color easily.
 AppColors colors(context) =>
