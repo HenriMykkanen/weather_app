@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/application/providers.dart';
 import 'package:weather_app/constants/theme.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_app/domain/forecast_hour.dart';
 
 class TodaysWeather extends ConsumerWidget {
   const TodaysWeather({super.key, required this.cityProvider});
@@ -15,6 +16,11 @@ class TodaysWeather extends ConsumerWidget {
     final weatherToday = ref.watch(forecastDayProvider(city));
     return weatherToday.when(
         data: (data) {
+          // final currentTime = DateTime.now();
+          // final futureHours = data.forecastByHour
+          //     .where((hourlyData) => hourlyData.time.isAfter(currentTime))
+          //     .toList();
+          // print(futureHours);
           return SizedBox(
             width: double.infinity,
             child: ListView.builder(

@@ -60,7 +60,6 @@ class SearchScreen extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
-                        // TODO: These widgets should not try to render before a search has been made
                         child: SingleChildScrollView(
                           child: SizedBox(
                             height: MediaQuery.of(context).size.height,

@@ -61,7 +61,7 @@ class HomeScreen extends ConsumerWidget {
                       onTap: () {
                         GoRouter.of(context).go('/c');
                       },
-                      child: Icon(Icons.settings),
+                      child: const Icon(Icons.settings),
                     ),
                   )
                 ],
