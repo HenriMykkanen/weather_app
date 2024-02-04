@@ -11,12 +11,12 @@ class UpcomingWeather extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final city = ref.watch(cityProvider);
-    final upcomingWeather = ref.watch(forecastFiveDaysProvider(city));
+    final upcomingWeather = ref.watch(forecastThreeDaysProvider(city));
     return upcomingWeather.when(
       data: (data) {
         return Column(
           children: [
-            ...data.forecastFiveDays.asMap().entries.map(
+            ...data.forecastThreeDays.asMap().entries.map(
               (index) {
                 return Expanded(
                     child: Container(
@@ -30,7 +30,7 @@ class UpcomingWeather extends ConsumerWidget {
                         flex: 2,
                         child: Text(
                           DateFormat('dd/MM E')
-                              .format(data.forecastFiveDays[index.key].date),
+                              .format(data.forecastThreeDays[index.key].date),
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ),
@@ -42,7 +42,7 @@ class UpcomingWeather extends ConsumerWidget {
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
                           imageUrl:
-                              'https:${data.forecastFiveDays[index.key].weather.weatherIconURL}',
+                              'https:${data.forecastThreeDays[index.key].weather.weatherIconURL}',
                         ),
                       ),
                       Expanded(
@@ -50,7 +50,7 @@ class UpcomingWeather extends ConsumerWidget {
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: Text(
-                            '${data.forecastFiveDays[index.key].temperatureMax}\u2103/${data.forecastFiveDays[index.key].temperatureMin}\u2103',
+                            '${data.forecastThreeDays[index.key].temperatureMax}\u2103/${data.forecastThreeDays[index.key].temperatureMin}\u2103',
                             style: Theme.of(context).textTheme.displaySmall,
                           ),
                         ),
@@ -67,7 +67,9 @@ class UpcomingWeather extends ConsumerWidget {
       loading: () => const Center(
         child: CircularProgressIndicator(),
       ),
-      error: (e, _) => Text(e.toString()),
+      error: (e, _) => Text(
+        e.toString(),
+      ),
     );
   }
 }

@@ -32,10 +32,10 @@ final forecastDayProvider =
   return forecastDay;
 });
 
-final forecastFiveDaysProvider =
-    FutureProvider.family<ForecastFiveDays, String>((ref, city) async {
-  final forecastFiveDays = await ref
+final forecastThreeDaysProvider =
+    FutureProvider.family<ForecastThreeDays, String>((ref, city) async {
+  final forecastThreeDays = await ref
       .watch(forecastRepositoryProvider)
-      .getForecastFiveDays(city: city);
-  return forecastFiveDays;
+      .getForecastThreeDays(city: city);
+  return forecastThreeDays;
 });

@@ -16,6 +16,8 @@ class ForecastDay {
   final List<ForecastHour> forecastByHour;
 
   factory ForecastDay.fromJSON(Map<String, dynamic> json, int daysAmount) {
+    print("daysAmount: $daysAmount");
+    print("forecastday length: ${json['forecast']['forecastday'].length}");
     final date = DateTime.fromMillisecondsSinceEpoch(
         json['forecast']['forecastday'][daysAmount]['date_epoch'] * 1000);
     final temperatureMax =
@@ -26,10 +28,12 @@ class ForecastDay {
         (json['forecast']['forecastday'][daysAmount]['day']['mintemp_c'] as num)
             .toInt()
             .round();
-    final weatherType =
-        json['forecast']['forecastday'][daysAmount]['day']['condition']['text'];
-    final weatherIconURL =
-        json['forecast']['forecastday'][daysAmount]['day']['condition']['icon'];
+    final weatherType = json['forecast']['forecastday'][daysAmount]['day']
+            ['condition']['text'] as String? ??
+        '';
+    final weatherIconURL = json['forecast']['forecastday'][daysAmount]['day']
+            ['condition']['icon'] as String? ??
+        '';
     final weather = Weather(
         time: date, weatherType: weatherType, weatherIconURL: weatherIconURL);
     final jsonAsDynamicList =
