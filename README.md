@@ -1,4 +1,4 @@
-# weather_app
+# Flutter Weather Application
 
 A simple weather App created using [Flutter](https://flutter.dev/) and using an API from [WeatherAPI](https://www.weatherapi.com/).
 Purpose of the project was to learn the basics of Riverpod State Management, attempt to have a decent folder structure/architecture and get some experience communicating with an external API.
