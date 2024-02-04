@@ -4,7 +4,7 @@ A simple weather App created using [Flutter](https://flutter.dev/) and using an 
 Purpose of the project was to learn the basics of Riverpod State Management, attempt to have a decent folder structure/architecture and get some experience communicating with an external API.
 
 Screenshots featuring core functionalities and theming:
-![Screenshot_1707070362](https://github.com/HenriMykkanen/weather_app/assets/144138353/e0dfdfcc-d32a-450d-8f93-d92493387b9e)
+![Screenshot_1707070362](https://github.com/HenriMykkanen/weather_app/assets/144138353/e0dfdfcc-d32a-450d-8f93-d92493387b9e width=100)
 ![Screenshot_1707070408](https://github.com/HenriMykkanen/weather_app/assets/144138353/1390050f-5a09-4e35-8499-93f48a8a4f74)
 ![Screenshot_1707070440](https://github.com/HenriMykkanen/weather_app/assets/144138353/ec255c73-82d3-4f56-9856-cad9254d33c9)
 ![Screenshot_1707070449](https://github.com/HenriMykkanen/weather_app/assets/144138353/32c1ad02-2bb0-404e-b0c7-c5bc64087d3a)
