@@ -37,3 +37,7 @@ Purpose of the project was to learn the basics of Riverpod State Management, att
 - [app_bar_with_search_switch](https://pub.dev/packages/app_bar_with_search_switch) AppBar with plenty of optional parameters
 - [colorful_safe_area](https://pub.dev/packages/colorful_safe_area) Easy way to handle colours for SafeArea widget
 
+## Helpful resources
+
+- [Code With Andrea - Repository Pattern](https://codewithandrea.com/articles/flutter-repository-pattern/)
+- [Kinjal Dhamat Light/Dark App Theme](https://medium.com/@kinjal.dhamat.sa/light-dark-app-theme-with-custom-color-in-flutter-c686db585f0c)
