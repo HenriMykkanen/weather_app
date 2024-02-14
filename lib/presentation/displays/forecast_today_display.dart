@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather_app/application/providers.dart';
+import 'package:weather_app/application/forecast_provider.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_app/domain/forecast.dart';
 
 class TodaysWeather extends ConsumerWidget {
   const TodaysWeather({super.key, required this.cityProvider});
@@ -11,13 +12,16 @@ class TodaysWeather extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final city = ref.watch(cityProvider);
-    final weatherToday = ref.watch(forecastDayProvider(city));
-    return weatherToday.when(
+    final AsyncValue<Forecast> forecastToday =
+        ref.watch(forecastProvider(city));
+    return forecastToday.when(
         data: (data) {
+          var day = data.forecastDays[0];
+
           return SizedBox(
             width: double.infinity,
             child: ListView.builder(
-              itemCount: data.forecastByHour.length,
+              itemCount: day.forecastByHour.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Container(
@@ -26,7 +30,8 @@ class TodaysWeather extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        DateFormat.Hm().format(data.forecastByHour[index].time),
+                        DateFormat.Hm().format(
+                            data.forecastDays[0].forecastByHour[index].time),
                         style: Theme.of(context).textTheme.displaySmall,
                       ),
                       CachedNetworkImage(
@@ -35,12 +40,12 @@ class TodaysWeather extends ConsumerWidget {
                         errorWidget: (context, url, error) =>
                             const Icon(Icons.error),
                         imageUrl:
-                            'https:${data.forecastByHour[index].weather.weatherIconURL}',
+                            'https:${data.forecastDays[0].forecastByHour[index].weatherCondition.weatherIconUrl}',
                         width: 48,
                         height: 48,
                       ),
                       Text(
-                        '${data.forecastByHour[index].temperature}\u2103',
+                        '${data.forecastDays[0].forecastByHour[index].temperature}\u2103',
                         style: Theme.of(context).textTheme.displaySmall,
                       )
                     ],

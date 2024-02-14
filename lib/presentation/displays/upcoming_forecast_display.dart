@@ -2,7 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/application/providers.dart';
+import 'package:weather_app/application/forecast_provider.dart';
+import 'package:weather_app/domain/forecast.dart';
 
 class UpcomingWeather extends ConsumerWidget {
   const UpcomingWeather({super.key, required this.cityProvider});
@@ -11,12 +12,12 @@ class UpcomingWeather extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final city = ref.watch(cityProvider);
-    final upcomingWeather = ref.watch(forecastThreeDaysProvider(city));
-    return upcomingWeather.when(
+    final AsyncValue<Forecast> forecast = ref.watch(forecastProvider(city));
+    return forecast.when(
       data: (data) {
         return Column(
           children: [
-            ...data.forecastThreeDays.asMap().entries.map(
+            ...data.forecastDays.asMap().entries.map(
               (index) {
                 return Expanded(
                     child: Container(
@@ -30,7 +31,7 @@ class UpcomingWeather extends ConsumerWidget {
                         flex: 2,
                         child: Text(
                           DateFormat('dd/MM E')
-                              .format(data.forecastThreeDays[index.key].date),
+                              .format(data.forecastDays[index.key].date),
                           style: Theme.of(context).textTheme.displaySmall,
                         ),
                       ),
@@ -42,7 +43,7 @@ class UpcomingWeather extends ConsumerWidget {
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
                           imageUrl:
-                              'https:${data.forecastThreeDays[index.key].weather.weatherIconURL}',
+                              'https:${data.forecastDays[index.key].dailyWeather.weatherCondition.weatherIconUrl}',
                         ),
                       ),
                       Expanded(
@@ -50,7 +51,7 @@ class UpcomingWeather extends ConsumerWidget {
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: Text(
-                            '${data.forecastThreeDays[index.key].temperatureMax}\u2103/${data.forecastThreeDays[index.key].temperatureMin}\u2103',
+                            '${data.forecastDays[index.key].dailyWeather.maxTemperature}\u2103/${data.forecastDays[index.key].dailyWeather.minTemperature}\u2103',
                             style: Theme.of(context).textTheme.displaySmall,
                           ),
                         ),

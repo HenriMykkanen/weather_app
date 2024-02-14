@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather_app/application/forecast_provider.dart';
-import 'package:weather_app/application/providers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:weather_app/application/weather_provider.dart';
-import 'package:weather_app/domain/current_weather.dart';
 import 'package:weather_app/domain/current_weather_new.dart';
-import 'package:weather_app/domain/forecast.dart';
 
 class CurrentWeatherDisplay extends ConsumerWidget {
   const CurrentWeatherDisplay({super.key, required this.cityProvider});
@@ -29,12 +25,12 @@ class CurrentWeatherDisplay extends ConsumerWidget {
                   city,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
-                // CachedNetworkImage(
-                //     placeholder: (context, url) =>
-                //         const CircularProgressIndicator(),
-                //     errorWidget: (context, url, error) =>
-                //         const Icon(Icons.error),
-                //     imageUrl: data.weatherCondition.weatherIconUrl.toString()),
+                CachedNetworkImage(
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                    imageUrl: 'https:${data.weatherCondition.weatherIconUrl}'),
                 Text(
                   '${data.temperature}\u2103',
                   style: Theme.of(context).textTheme.displayMedium,
