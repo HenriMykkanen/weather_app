@@ -2,9 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/application/providers.dart';
-import 'package:weather_app/constants/theme.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/domain/forecast_hour.dart';
 
 class TodaysWeather extends ConsumerWidget {
   const TodaysWeather({super.key, required this.cityProvider});
