@@ -13,8 +13,12 @@ class ForecastHour {
     final temperature = (json['temp_c'] as num).toInt().round();
     final weatherType = json['condition']['text'];
     final weatherIconURL = json['condition']['icon'];
+
     final weather = Weather(
-        time: time, weatherType: weatherType, weatherIconURL: weatherIconURL);
+      time: time,
+      weatherType: weatherType,
+      weatherIconURL: weatherIconURL,
+    );
     return ForecastHour(
       time: time,
       temperature: temperature,

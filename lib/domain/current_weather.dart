@@ -14,11 +14,15 @@ class CurrentWeather {
         (json['current']['temp_c'] as num).toInt().round();
     final weatherType = json['current']['condition']['text'];
     final weatherIconURL = json['current']['condition']['icon'] as String;
+    final wind = json['current']['wind_kph'] as double;
 
     return CurrentWeather(
       currentTemperature: currentTemperature,
       currentWeather: Weather(
-          time: time, weatherType: weatherType, weatherIconURL: weatherIconURL),
+          time: time,
+          weatherType: weatherType,
+          weatherIconURL: weatherIconURL,
+          wind: wind),
     );
   }
 }

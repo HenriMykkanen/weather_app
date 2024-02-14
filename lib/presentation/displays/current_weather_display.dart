@@ -32,6 +32,7 @@ class CurrentWeatherDisplay extends ConsumerWidget {
                   '${data.currentTemperature}\u2103',
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
+                Text(data.currentWeather.wind.toString())
               ],
             ));
       },

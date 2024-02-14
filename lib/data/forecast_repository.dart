@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/domain/current_weather.dart';
 import 'package:weather_app/domain/forecast_day.dart';
-import 'package:weather_app/domain/forecast_five_days.dart';
+import 'package:weather_app/domain/forecast_three_days.dart';
 
 // https://codewithandrea.com/articles/flutter-repository-pattern/
 
