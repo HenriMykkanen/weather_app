@@ -13,7 +13,7 @@ class ForecastDayNew with _$ForecastDayNew {
     @JsonKey(name: 'date_epoch')
     required DateTime date,
     @JsonKey(name: 'day') required DailyWeather dailyWeather,
-    @Default([]) List<ForecastHourNew> forecastByHour,
+    @JsonKey(name: 'hour') @Default([]) List<ForecastHourNew> forecastByHour,
   }) = _ForecastDayNew;
 
   factory ForecastDayNew.fromJson(Map<String, dynamic> json) =>

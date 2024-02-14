@@ -25,6 +25,7 @@ mixin _$ForecastDayNew {
   DateTime get date => throw _privateConstructorUsedError;
   @JsonKey(name: 'day')
   DailyWeather get dailyWeather => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hour')
   List<ForecastHourNew> get forecastByHour =>
       throw _privateConstructorUsedError;
 
@@ -43,7 +44,7 @@ abstract class $ForecastDayNewCopyWith<$Res> {
   $Res call(
       {@EpochDateTimeConverter() @JsonKey(name: 'date_epoch') DateTime date,
       @JsonKey(name: 'day') DailyWeather dailyWeather,
-      List<ForecastHourNew> forecastByHour});
+      @JsonKey(name: 'hour') List<ForecastHourNew> forecastByHour});
 
   $DailyWeatherCopyWith<$Res> get dailyWeather;
 }
@@ -101,7 +102,7 @@ abstract class _$$ForecastDayNewImplCopyWith<$Res>
   $Res call(
       {@EpochDateTimeConverter() @JsonKey(name: 'date_epoch') DateTime date,
       @JsonKey(name: 'day') DailyWeather dailyWeather,
-      List<ForecastHourNew> forecastByHour});
+      @JsonKey(name: 'hour') List<ForecastHourNew> forecastByHour});
 
   @override
   $DailyWeatherCopyWith<$Res> get dailyWeather;
@@ -147,6 +148,7 @@ class _$ForecastDayNewImpl implements _ForecastDayNew {
       @JsonKey(name: 'date_epoch')
       required this.date,
       @JsonKey(name: 'day') required this.dailyWeather,
+      @JsonKey(name: 'hour')
       final List<ForecastHourNew> forecastByHour = const []})
       : _forecastByHour = forecastByHour;
 
@@ -162,7 +164,7 @@ class _$ForecastDayNewImpl implements _ForecastDayNew {
   final DailyWeather dailyWeather;
   final List<ForecastHourNew> _forecastByHour;
   @override
-  @JsonKey()
+  @JsonKey(name: 'hour')
   List<ForecastHourNew> get forecastByHour {
     if (_forecastByHour is EqualUnmodifiableListView) return _forecastByHour;
     // ignore: implicit_dynamic_type
@@ -208,11 +210,12 @@ class _$ForecastDayNewImpl implements _ForecastDayNew {
 
 abstract class _ForecastDayNew implements ForecastDayNew {
   factory _ForecastDayNew(
-      {@EpochDateTimeConverter()
-      @JsonKey(name: 'date_epoch')
-      required final DateTime date,
-      @JsonKey(name: 'day') required final DailyWeather dailyWeather,
-      final List<ForecastHourNew> forecastByHour}) = _$ForecastDayNewImpl;
+          {@EpochDateTimeConverter()
+          @JsonKey(name: 'date_epoch')
+          required final DateTime date,
+          @JsonKey(name: 'day') required final DailyWeather dailyWeather,
+          @JsonKey(name: 'hour') final List<ForecastHourNew> forecastByHour}) =
+      _$ForecastDayNewImpl;
 
   factory _ForecastDayNew.fromJson(Map<String, dynamic> json) =
       _$ForecastDayNewImpl.fromJson;
@@ -225,6 +228,7 @@ abstract class _ForecastDayNew implements ForecastDayNew {
   @JsonKey(name: 'day')
   DailyWeather get dailyWeather;
   @override
+  @JsonKey(name: 'hour')
   List<ForecastHourNew> get forecastByHour;
   @override
   @JsonKey(ignore: true)

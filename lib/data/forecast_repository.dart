@@ -6,6 +6,8 @@ import 'package:weather_app/data/api_exception.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/domain/current_weather.dart';
+import 'package:weather_app/domain/current_weather_new.dart';
+import 'package:weather_app/domain/forecast.dart';
 import 'package:weather_app/domain/forecast_day.dart';
 import 'package:weather_app/domain/forecast_three_days.dart';
 
@@ -29,6 +31,16 @@ class HttpForecastRepositoryNew {
       _getData(
           uri: api.forecast(city),
           builder: ((data) => ForecastThreeDays.fromJSON(data)));
+
+  Future<Forecast> getForecast({required String city}) => _getData(
+        uri: api.forecast(city),
+        builder: (data) => Forecast.fromJson(data),
+      );
+
+  Future<CurrentWeatherNew> getWeather({required String city}) => _getData(
+        uri: api.forecast(city),
+        builder: (data) => CurrentWeatherNew.fromJson(data),
+      );
 
   Future<GenericType> _getData<GenericType>({
     required Uri uri,

@@ -6,8 +6,8 @@ part 'weather_condition.g.dart';
 @freezed
 class WeatherCondition with _$WeatherCondition {
   factory WeatherCondition({
-    required String weatherType,
-    @JsonKey(name: 'icon') required Uri weatherIconUrl,
+    @JsonKey(name: 'text') required String weatherType,
+    @JsonKey(name: 'icon') required String weatherIconUrl,
   }) = _WeatherCondition;
 
   factory WeatherCondition.fromJson(Map<String, dynamic> json) =>

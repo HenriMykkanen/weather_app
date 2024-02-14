@@ -14,15 +14,9 @@ class TodaysWeather extends ConsumerWidget {
     final weatherToday = ref.watch(forecastDayProvider(city));
     return weatherToday.when(
         data: (data) {
-          // final currentTime = DateTime.now();
-          // final futureHours = data.forecastByHour
-          //     .where((hourlyData) => hourlyData.time.isAfter(currentTime))
-          //     .toList();
-          // print(futureHours);
           return SizedBox(
             width: double.infinity,
             child: ListView.builder(
-              // TODO: Should make this only return hours in the future instead of a whole 00-23h cycle
               itemCount: data.forecastByHour.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {

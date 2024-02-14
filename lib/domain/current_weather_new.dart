@@ -15,9 +15,11 @@ class CurrentWeatherNew with _$CurrentWeatherNew {
     @DoubleIntConverter() @JsonKey(name: 'temp_c') required int temperature,
     @JsonKey(name: 'wind_kph') required double wind,
     @JsonKey(name: 'condition') required WeatherCondition weatherCondition,
-    @JsonKey(name: 'feelslike_c') required int temperatureFeelsLike,
+    @DoubleIntConverter()
+    @JsonKey(name: 'feelslike_c')
+    required int temperatureFeelsLike,
   }) = _CurrentWeatherNew;
 
   factory CurrentWeatherNew.fromJson(Map<String, dynamic> json) =>
-      _$CurrentWeatherNewFromJson(json);
+      _$CurrentWeatherNewFromJson(json['current']);
 }

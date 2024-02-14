@@ -20,9 +20,10 @@ WeatherCondition _$WeatherConditionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeatherCondition {
+  @JsonKey(name: 'text')
   String get weatherType => throw _privateConstructorUsedError;
   @JsonKey(name: 'icon')
-  Uri get weatherIconUrl => throw _privateConstructorUsedError;
+  String get weatherIconUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,9 @@ abstract class $WeatherConditionCopyWith<$Res> {
           WeatherCondition value, $Res Function(WeatherCondition) then) =
       _$WeatherConditionCopyWithImpl<$Res, WeatherCondition>;
   @useResult
-  $Res call({String weatherType, @JsonKey(name: 'icon') Uri weatherIconUrl});
+  $Res call(
+      {@JsonKey(name: 'text') String weatherType,
+      @JsonKey(name: 'icon') String weatherIconUrl});
 }
 
 /// @nodoc
@@ -63,7 +66,7 @@ class _$WeatherConditionCopyWithImpl<$Res, $Val extends WeatherCondition>
       weatherIconUrl: null == weatherIconUrl
           ? _value.weatherIconUrl
           : weatherIconUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
+              as String,
     ) as $Val);
   }
 }
@@ -76,7 +79,9 @@ abstract class _$$WeatherConditionImplCopyWith<$Res>
       __$$WeatherConditionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String weatherType, @JsonKey(name: 'icon') Uri weatherIconUrl});
+  $Res call(
+      {@JsonKey(name: 'text') String weatherType,
+      @JsonKey(name: 'icon') String weatherIconUrl});
 }
 
 /// @nodoc
@@ -101,7 +106,7 @@ class __$$WeatherConditionImplCopyWithImpl<$Res>
       weatherIconUrl: null == weatherIconUrl
           ? _value.weatherIconUrl
           : weatherIconUrl // ignore: cast_nullable_to_non_nullable
-              as Uri,
+              as String,
     ));
   }
 }
@@ -110,17 +115,18 @@ class __$$WeatherConditionImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$WeatherConditionImpl implements _WeatherCondition {
   _$WeatherConditionImpl(
-      {required this.weatherType,
+      {@JsonKey(name: 'text') required this.weatherType,
       @JsonKey(name: 'icon') required this.weatherIconUrl});
 
   factory _$WeatherConditionImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeatherConditionImplFromJson(json);
 
   @override
+  @JsonKey(name: 'text')
   final String weatherType;
   @override
   @JsonKey(name: 'icon')
-  final Uri weatherIconUrl;
+  final String weatherIconUrl;
 
   @override
   String toString() {
@@ -159,18 +165,19 @@ class _$WeatherConditionImpl implements _WeatherCondition {
 
 abstract class _WeatherCondition implements WeatherCondition {
   factory _WeatherCondition(
-          {required final String weatherType,
-          @JsonKey(name: 'icon') required final Uri weatherIconUrl}) =
+          {@JsonKey(name: 'text') required final String weatherType,
+          @JsonKey(name: 'icon') required final String weatherIconUrl}) =
       _$WeatherConditionImpl;
 
   factory _WeatherCondition.fromJson(Map<String, dynamic> json) =
       _$WeatherConditionImpl.fromJson;
 
   @override
+  @JsonKey(name: 'text')
   String get weatherType;
   @override
   @JsonKey(name: 'icon')
-  Uri get weatherIconUrl;
+  String get weatherIconUrl;
   @override
   @JsonKey(ignore: true)
   _$$WeatherConditionImplCopyWith<_$WeatherConditionImpl> get copyWith =>

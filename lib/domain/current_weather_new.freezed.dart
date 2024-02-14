@@ -30,6 +30,7 @@ mixin _$CurrentWeatherNew {
   double get wind => throw _privateConstructorUsedError;
   @JsonKey(name: 'condition')
   WeatherCondition get weatherCondition => throw _privateConstructorUsedError;
+  @DoubleIntConverter()
   @JsonKey(name: 'feelslike_c')
   int get temperatureFeelsLike => throw _privateConstructorUsedError;
 
@@ -52,7 +53,9 @@ abstract class $CurrentWeatherNewCopyWith<$Res> {
       @DoubleIntConverter() @JsonKey(name: 'temp_c') int temperature,
       @JsonKey(name: 'wind_kph') double wind,
       @JsonKey(name: 'condition') WeatherCondition weatherCondition,
-      @JsonKey(name: 'feelslike_c') int temperatureFeelsLike});
+      @DoubleIntConverter()
+      @JsonKey(name: 'feelslike_c')
+      int temperatureFeelsLike});
 
   $WeatherConditionCopyWith<$Res> get weatherCondition;
 }
@@ -124,7 +127,9 @@ abstract class _$$CurrentWeatherNewImplCopyWith<$Res>
       @DoubleIntConverter() @JsonKey(name: 'temp_c') int temperature,
       @JsonKey(name: 'wind_kph') double wind,
       @JsonKey(name: 'condition') WeatherCondition weatherCondition,
-      @JsonKey(name: 'feelslike_c') int temperatureFeelsLike});
+      @DoubleIntConverter()
+      @JsonKey(name: 'feelslike_c')
+      int temperatureFeelsLike});
 
   @override
   $WeatherConditionCopyWith<$Res> get weatherCondition;
@@ -182,7 +187,9 @@ class _$CurrentWeatherNewImpl implements _CurrentWeatherNew {
       @DoubleIntConverter() @JsonKey(name: 'temp_c') required this.temperature,
       @JsonKey(name: 'wind_kph') required this.wind,
       @JsonKey(name: 'condition') required this.weatherCondition,
-      @JsonKey(name: 'feelslike_c') required this.temperatureFeelsLike});
+      @DoubleIntConverter()
+      @JsonKey(name: 'feelslike_c')
+      required this.temperatureFeelsLike});
 
   factory _$CurrentWeatherNewImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrentWeatherNewImplFromJson(json);
@@ -202,6 +209,7 @@ class _$CurrentWeatherNewImpl implements _CurrentWeatherNew {
   @JsonKey(name: 'condition')
   final WeatherCondition weatherCondition;
   @override
+  @DoubleIntConverter()
   @JsonKey(name: 'feelslike_c')
   final int temperatureFeelsLike;
 
@@ -256,6 +264,7 @@ abstract class _CurrentWeatherNew implements CurrentWeatherNew {
       @JsonKey(name: 'wind_kph') required final double wind,
       @JsonKey(name: 'condition')
       required final WeatherCondition weatherCondition,
+      @DoubleIntConverter()
       @JsonKey(name: 'feelslike_c')
       required final int temperatureFeelsLike}) = _$CurrentWeatherNewImpl;
 
@@ -277,6 +286,7 @@ abstract class _CurrentWeatherNew implements CurrentWeatherNew {
   @JsonKey(name: 'condition')
   WeatherCondition get weatherCondition;
   @override
+  @DoubleIntConverter()
   @JsonKey(name: 'feelslike_c')
   int get temperatureFeelsLike;
   @override

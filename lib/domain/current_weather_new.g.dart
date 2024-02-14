@@ -16,7 +16,8 @@ _$CurrentWeatherNewImpl _$$CurrentWeatherNewImplFromJson(
       wind: (json['wind_kph'] as num).toDouble(),
       weatherCondition:
           WeatherCondition.fromJson(json['condition'] as Map<String, dynamic>),
-      temperatureFeelsLike: json['feelslike_c'] as int,
+      temperatureFeelsLike:
+          const DoubleIntConverter().fromJson(json['feelslike_c'] as double),
     );
 
 Map<String, dynamic> _$$CurrentWeatherNewImplToJson(
@@ -27,5 +28,6 @@ Map<String, dynamic> _$$CurrentWeatherNewImplToJson(
       'temp_c': const DoubleIntConverter().toJson(instance.temperature),
       'wind_kph': instance.wind,
       'condition': instance.weatherCondition,
-      'feelslike_c': instance.temperatureFeelsLike,
+      'feelslike_c':
+          const DoubleIntConverter().toJson(instance.temperatureFeelsLike),
     };

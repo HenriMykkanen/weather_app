@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:weather_app/domain/current_weather_new.dart';
 import 'package:weather_app/domain/forecast_day_new.dart';
 
 part 'forecast.freezed.dart';
