@@ -5,7 +5,7 @@ import 'package:weather_app/api/api.dart';
 import 'package:weather_app/data/api_exception.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weather_app/domain/current_weather_new.dart';
+import 'package:weather_app/domain/current_weather.dart';
 import 'package:weather_app/domain/forecast.dart';
 
 // https://codewithandrea.com/articles/flutter-repository-pattern/
@@ -20,9 +20,9 @@ class HttpForecastRepositoryNew {
         builder: (data) => Forecast.fromJson(data),
       );
 
-  Future<CurrentWeatherNew> getWeather({required String city}) => _getData(
+  Future<CurrentWeather> getWeather({required String city}) => _getData(
         uri: api.forecast(city),
-        builder: (data) => CurrentWeatherNew.fromJson(data),
+        builder: (data) => CurrentWeather.fromJson(data),
       );
 
   Future<GenericType> _getData<GenericType>({

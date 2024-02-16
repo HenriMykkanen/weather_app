@@ -6,7 +6,7 @@ part of 'weather_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$weatherNowHash() => r'283170f8704c547afc795113c39dea79b2186cdb';
+String _$weatherNowHash() => r'806e02b4ef425c0bc50a008193f1165ed39ee40e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,7 +34,7 @@ class _SystemHash {
 const weatherNowProvider = WeatherNowFamily();
 
 /// See also [weatherNow].
-class WeatherNowFamily extends Family<AsyncValue<CurrentWeatherNew>> {
+class WeatherNowFamily extends Family<AsyncValue<CurrentWeather>> {
   /// See also [weatherNow].
   const WeatherNowFamily();
 
@@ -72,7 +72,7 @@ class WeatherNowFamily extends Family<AsyncValue<CurrentWeatherNew>> {
 }
 
 /// See also [weatherNow].
-class WeatherNowProvider extends AutoDisposeFutureProvider<CurrentWeatherNew> {
+class WeatherNowProvider extends AutoDisposeFutureProvider<CurrentWeather> {
   /// See also [weatherNow].
   WeatherNowProvider(
     String city,
@@ -107,7 +107,7 @@ class WeatherNowProvider extends AutoDisposeFutureProvider<CurrentWeatherNew> {
 
   @override
   Override overrideWith(
-    FutureOr<CurrentWeatherNew> Function(WeatherNowRef provider) create,
+    FutureOr<CurrentWeather> Function(WeatherNowRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -124,7 +124,7 @@ class WeatherNowProvider extends AutoDisposeFutureProvider<CurrentWeatherNew> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<CurrentWeatherNew> createElement() {
+  AutoDisposeFutureProviderElement<CurrentWeather> createElement() {
     return _WeatherNowProviderElement(this);
   }
 
@@ -142,13 +142,13 @@ class WeatherNowProvider extends AutoDisposeFutureProvider<CurrentWeatherNew> {
   }
 }
 
-mixin WeatherNowRef on AutoDisposeFutureProviderRef<CurrentWeatherNew> {
+mixin WeatherNowRef on AutoDisposeFutureProviderRef<CurrentWeather> {
   /// The parameter `city` of this provider.
   String get city;
 }
 
 class _WeatherNowProviderElement
-    extends AutoDisposeFutureProviderElement<CurrentWeatherNew>
+    extends AutoDisposeFutureProviderElement<CurrentWeather>
     with WeatherNowRef {
   _WeatherNowProviderElement(super.provider);
 

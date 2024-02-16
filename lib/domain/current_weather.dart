@@ -3,12 +3,12 @@ import 'package:weather_app/domain/weather_condition.dart';
 import 'package:weather_app/utilities/double_int_converter.dart';
 import 'package:weather_app/utilities/epoch_datetime_converter.dart';
 
-part 'current_weather_new.freezed.dart';
-part 'current_weather_new.g.dart';
+part 'current_weather.freezed.dart';
+part 'current_weather.g.dart';
 
 @freezed
-class CurrentWeatherNew with _$CurrentWeatherNew {
-  factory CurrentWeatherNew({
+class CurrentWeather with _$CurrentWeather {
+  factory CurrentWeather({
     @EpochDateTimeConverter()
     @JsonKey(name: 'last_updated_epoch')
     required DateTime time,
@@ -18,8 +18,8 @@ class CurrentWeatherNew with _$CurrentWeatherNew {
     @DoubleIntConverter()
     @JsonKey(name: 'feelslike_c')
     required int temperatureFeelsLike,
-  }) = _CurrentWeatherNew;
+  }) = _CurrentWeather;
 
-  factory CurrentWeatherNew.fromJson(Map<String, dynamic> json) =>
-      _$CurrentWeatherNewFromJson(json['current']);
+  factory CurrentWeather.fromJson(Map<String, dynamic> json) =>
+      _$CurrentWeatherFromJson(json['current']);
 }

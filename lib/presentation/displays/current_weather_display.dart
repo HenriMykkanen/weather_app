@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:weather_app/application/weather_provider.dart';
-import 'package:weather_app/domain/current_weather_new.dart';
+import 'package:weather_app/domain/current_weather.dart';
 
 class CurrentWeatherDisplay extends ConsumerWidget {
   const CurrentWeatherDisplay({super.key, required this.cityProvider});
@@ -11,7 +11,7 @@ class CurrentWeatherDisplay extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final city = ref.watch(cityProvider);
-    final AsyncValue<CurrentWeatherNew> currentWeather =
+    final AsyncValue<CurrentWeather> currentWeather =
         ref.watch(weatherNowProvider(city));
 
     return currentWeather.when(

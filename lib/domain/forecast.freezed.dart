@@ -21,7 +21,7 @@ Forecast _$ForecastFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Forecast {
   @JsonKey(name: 'forecastday')
-  List<ForecastDayNew> get forecastDays => throw _privateConstructorUsedError;
+  List<ForecastDay> get forecastDays => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $ForecastCopyWith<$Res> {
   factory $ForecastCopyWith(Forecast value, $Res Function(Forecast) then) =
       _$ForecastCopyWithImpl<$Res, Forecast>;
   @useResult
-  $Res call({@JsonKey(name: 'forecastday') List<ForecastDayNew> forecastDays});
+  $Res call({@JsonKey(name: 'forecastday') List<ForecastDay> forecastDays});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$ForecastCopyWithImpl<$Res, $Val extends Forecast>
       forecastDays: null == forecastDays
           ? _value.forecastDays
           : forecastDays // ignore: cast_nullable_to_non_nullable
-              as List<ForecastDayNew>,
+              as List<ForecastDay>,
     ) as $Val);
   }
 }
@@ -69,7 +69,7 @@ abstract class _$$ForecastImplCopyWith<$Res>
       __$$ForecastImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'forecastday') List<ForecastDayNew> forecastDays});
+  $Res call({@JsonKey(name: 'forecastday') List<ForecastDay> forecastDays});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class __$$ForecastImplCopyWithImpl<$Res>
       forecastDays: null == forecastDays
           ? _value._forecastDays
           : forecastDays // ignore: cast_nullable_to_non_nullable
-              as List<ForecastDayNew>,
+              as List<ForecastDay>,
     ));
   }
 }
@@ -99,16 +99,16 @@ class __$$ForecastImplCopyWithImpl<$Res>
 class _$ForecastImpl implements _Forecast {
   _$ForecastImpl(
       {@JsonKey(name: 'forecastday')
-      required final List<ForecastDayNew> forecastDays})
+      required final List<ForecastDay> forecastDays})
       : _forecastDays = forecastDays;
 
   factory _$ForecastImpl.fromJson(Map<String, dynamic> json) =>
       _$$ForecastImplFromJson(json);
 
-  final List<ForecastDayNew> _forecastDays;
+  final List<ForecastDay> _forecastDays;
   @override
   @JsonKey(name: 'forecastday')
-  List<ForecastDayNew> get forecastDays {
+  List<ForecastDay> get forecastDays {
     if (_forecastDays is EqualUnmodifiableListView) return _forecastDays;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_forecastDays);
@@ -150,14 +150,14 @@ class _$ForecastImpl implements _Forecast {
 abstract class _Forecast implements Forecast {
   factory _Forecast(
       {@JsonKey(name: 'forecastday')
-      required final List<ForecastDayNew> forecastDays}) = _$ForecastImpl;
+      required final List<ForecastDay> forecastDays}) = _$ForecastImpl;
 
   factory _Forecast.fromJson(Map<String, dynamic> json) =
       _$ForecastImpl.fromJson;
 
   @override
   @JsonKey(name: 'forecastday')
-  List<ForecastDayNew> get forecastDays;
+  List<ForecastDay> get forecastDays;
   @override
   @JsonKey(ignore: true)
   _$$ForecastImplCopyWith<_$ForecastImpl> get copyWith =>

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'forecast_hour_new.dart';
+part of 'forecast_hour.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ForecastHourNew _$ForecastHourNewFromJson(Map<String, dynamic> json) {
-  return _ForecastHourNew.fromJson(json);
+ForecastHour _$ForecastHourFromJson(Map<String, dynamic> json) {
+  return _ForecastHour.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ForecastHourNew {
+mixin _$ForecastHour {
   @EpochDateTimeConverter()
   @JsonKey(name: 'time_epoch')
   DateTime get time => throw _privateConstructorUsedError;
@@ -31,15 +31,15 @@ mixin _$ForecastHourNew {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ForecastHourNewCopyWith<ForecastHourNew> get copyWith =>
+  $ForecastHourCopyWith<ForecastHour> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ForecastHourNewCopyWith<$Res> {
-  factory $ForecastHourNewCopyWith(
-          ForecastHourNew value, $Res Function(ForecastHourNew) then) =
-      _$ForecastHourNewCopyWithImpl<$Res, ForecastHourNew>;
+abstract class $ForecastHourCopyWith<$Res> {
+  factory $ForecastHourCopyWith(
+          ForecastHour value, $Res Function(ForecastHour) then) =
+      _$ForecastHourCopyWithImpl<$Res, ForecastHour>;
   @useResult
   $Res call(
       {@EpochDateTimeConverter() @JsonKey(name: 'time_epoch') DateTime time,
@@ -50,9 +50,9 @@ abstract class $ForecastHourNewCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ForecastHourNewCopyWithImpl<$Res, $Val extends ForecastHourNew>
-    implements $ForecastHourNewCopyWith<$Res> {
-  _$ForecastHourNewCopyWithImpl(this._value, this._then);
+class _$ForecastHourCopyWithImpl<$Res, $Val extends ForecastHour>
+    implements $ForecastHourCopyWith<$Res> {
+  _$ForecastHourCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -92,11 +92,11 @@ class _$ForecastHourNewCopyWithImpl<$Res, $Val extends ForecastHourNew>
 }
 
 /// @nodoc
-abstract class _$$ForecastHourNewImplCopyWith<$Res>
-    implements $ForecastHourNewCopyWith<$Res> {
-  factory _$$ForecastHourNewImplCopyWith(_$ForecastHourNewImpl value,
-          $Res Function(_$ForecastHourNewImpl) then) =
-      __$$ForecastHourNewImplCopyWithImpl<$Res>;
+abstract class _$$ForecastHourImplCopyWith<$Res>
+    implements $ForecastHourCopyWith<$Res> {
+  factory _$$ForecastHourImplCopyWith(
+          _$ForecastHourImpl value, $Res Function(_$ForecastHourImpl) then) =
+      __$$ForecastHourImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$ForecastHourNewImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ForecastHourNewImplCopyWithImpl<$Res>
-    extends _$ForecastHourNewCopyWithImpl<$Res, _$ForecastHourNewImpl>
-    implements _$$ForecastHourNewImplCopyWith<$Res> {
-  __$$ForecastHourNewImplCopyWithImpl(
-      _$ForecastHourNewImpl _value, $Res Function(_$ForecastHourNewImpl) _then)
+class __$$ForecastHourImplCopyWithImpl<$Res>
+    extends _$ForecastHourCopyWithImpl<$Res, _$ForecastHourImpl>
+    implements _$$ForecastHourImplCopyWith<$Res> {
+  __$$ForecastHourImplCopyWithImpl(
+      _$ForecastHourImpl _value, $Res Function(_$ForecastHourImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$ForecastHourNewImplCopyWithImpl<$Res>
     Object? temperature = null,
     Object? weatherCondition = null,
   }) {
-    return _then(_$ForecastHourNewImpl(
+    return _then(_$ForecastHourImpl(
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -142,16 +142,16 @@ class __$$ForecastHourNewImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ForecastHourNewImpl implements _ForecastHourNew {
-  _$ForecastHourNewImpl(
+class _$ForecastHourImpl implements _ForecastHour {
+  _$ForecastHourImpl(
       {@EpochDateTimeConverter()
       @JsonKey(name: 'time_epoch')
       required this.time,
       @DoubleIntConverter() @JsonKey(name: 'temp_c') required this.temperature,
       @JsonKey(name: 'condition') required this.weatherCondition});
 
-  factory _$ForecastHourNewImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ForecastHourNewImplFromJson(json);
+  factory _$ForecastHourImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ForecastHourImplFromJson(json);
 
   @override
   @EpochDateTimeConverter()
@@ -167,14 +167,14 @@ class _$ForecastHourNewImpl implements _ForecastHourNew {
 
   @override
   String toString() {
-    return 'ForecastHourNew(time: $time, temperature: $temperature, weatherCondition: $weatherCondition)';
+    return 'ForecastHour(time: $time, temperature: $temperature, weatherCondition: $weatherCondition)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ForecastHourNewImpl &&
+            other is _$ForecastHourImpl &&
             (identical(other.time, time) || other.time == time) &&
             (identical(other.temperature, temperature) ||
                 other.temperature == temperature) &&
@@ -190,32 +190,30 @@ class _$ForecastHourNewImpl implements _ForecastHourNew {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ForecastHourNewImplCopyWith<_$ForecastHourNewImpl> get copyWith =>
-      __$$ForecastHourNewImplCopyWithImpl<_$ForecastHourNewImpl>(
-          this, _$identity);
+  _$$ForecastHourImplCopyWith<_$ForecastHourImpl> get copyWith =>
+      __$$ForecastHourImplCopyWithImpl<_$ForecastHourImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ForecastHourNewImplToJson(
+    return _$$ForecastHourImplToJson(
       this,
     );
   }
 }
 
-abstract class _ForecastHourNew implements ForecastHourNew {
-  factory _ForecastHourNew(
-          {@EpochDateTimeConverter()
-          @JsonKey(name: 'time_epoch')
-          required final DateTime time,
-          @DoubleIntConverter()
-          @JsonKey(name: 'temp_c')
-          required final int temperature,
-          @JsonKey(name: 'condition')
-          required final WeatherCondition weatherCondition}) =
-      _$ForecastHourNewImpl;
+abstract class _ForecastHour implements ForecastHour {
+  factory _ForecastHour(
+      {@EpochDateTimeConverter()
+      @JsonKey(name: 'time_epoch')
+      required final DateTime time,
+      @DoubleIntConverter()
+      @JsonKey(name: 'temp_c')
+      required final int temperature,
+      @JsonKey(name: 'condition')
+      required final WeatherCondition weatherCondition}) = _$ForecastHourImpl;
 
-  factory _ForecastHourNew.fromJson(Map<String, dynamic> json) =
-      _$ForecastHourNewImpl.fromJson;
+  factory _ForecastHour.fromJson(Map<String, dynamic> json) =
+      _$ForecastHourImpl.fromJson;
 
   @override
   @EpochDateTimeConverter()
@@ -230,6 +228,6 @@ abstract class _ForecastHourNew implements ForecastHourNew {
   WeatherCondition get weatherCondition;
   @override
   @JsonKey(ignore: true)
-  _$$ForecastHourNewImplCopyWith<_$ForecastHourNewImpl> get copyWith =>
+  _$$ForecastHourImplCopyWith<_$ForecastHourImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,23 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'forecast_day_new.dart';
+part of 'forecast_day.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ForecastDayNewImpl _$$ForecastDayNewImplFromJson(Map<String, dynamic> json) =>
-    _$ForecastDayNewImpl(
+_$ForecastDayImpl _$$ForecastDayImplFromJson(Map<String, dynamic> json) =>
+    _$ForecastDayImpl(
       date: const EpochDateTimeConverter().fromJson(json['date_epoch'] as int),
       dailyWeather: DailyWeather.fromJson(json['day'] as Map<String, dynamic>),
       forecastByHour: (json['hour'] as List<dynamic>?)
-              ?.map((e) => ForecastHourNew.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => ForecastHour.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );
 
-Map<String, dynamic> _$$ForecastDayNewImplToJson(
-        _$ForecastDayNewImpl instance) =>
+Map<String, dynamic> _$$ForecastDayImplToJson(_$ForecastDayImpl instance) =>
     <String, dynamic>{
       'date_epoch': const EpochDateTimeConverter().toJson(instance.date),
       'day': instance.dailyWeather,

@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'forecast_hour_new.dart';
+part of 'forecast_hour.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ForecastHourNewImpl _$$ForecastHourNewImplFromJson(
-        Map<String, dynamic> json) =>
-    _$ForecastHourNewImpl(
+_$ForecastHourImpl _$$ForecastHourImplFromJson(Map<String, dynamic> json) =>
+    _$ForecastHourImpl(
       time: const EpochDateTimeConverter().fromJson(json['time_epoch'] as int),
       temperature:
           const DoubleIntConverter().fromJson(json['temp_c'] as double),
@@ -16,8 +15,7 @@ _$ForecastHourNewImpl _$$ForecastHourNewImplFromJson(
           WeatherCondition.fromJson(json['condition'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$ForecastHourNewImplToJson(
-        _$ForecastHourNewImpl instance) =>
+Map<String, dynamic> _$$ForecastHourImplToJson(_$ForecastHourImpl instance) =>
     <String, dynamic>{
       'time_epoch': const EpochDateTimeConverter().toJson(instance.time),
       'temp_c': const DoubleIntConverter().toJson(instance.temperature),

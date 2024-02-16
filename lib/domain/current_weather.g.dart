@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'current_weather_new.dart';
+part of 'current_weather.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CurrentWeatherNewImpl _$$CurrentWeatherNewImplFromJson(
-        Map<String, dynamic> json) =>
-    _$CurrentWeatherNewImpl(
+_$CurrentWeatherImpl _$$CurrentWeatherImplFromJson(Map<String, dynamic> json) =>
+    _$CurrentWeatherImpl(
       time: const EpochDateTimeConverter()
           .fromJson(json['last_updated_epoch'] as int),
       temperature:
@@ -20,8 +19,8 @@ _$CurrentWeatherNewImpl _$$CurrentWeatherNewImplFromJson(
           const DoubleIntConverter().fromJson(json['feelslike_c'] as double),
     );
 
-Map<String, dynamic> _$$CurrentWeatherNewImplToJson(
-        _$CurrentWeatherNewImpl instance) =>
+Map<String, dynamic> _$$CurrentWeatherImplToJson(
+        _$CurrentWeatherImpl instance) =>
     <String, dynamic>{
       'last_updated_epoch':
           const EpochDateTimeConverter().toJson(instance.time),
