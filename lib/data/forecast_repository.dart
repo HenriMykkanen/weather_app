@@ -7,11 +7,14 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/domain/current_weather.dart';
 import 'package:weather_app/domain/forecast.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'forecast_repository.g.dart';
 
 // https://codewithandrea.com/articles/flutter-repository-pattern/
 
-class HttpForecastRepositoryNew {
-  HttpForecastRepositoryNew({required this.api, required this.client});
+class HttpForecastRepository {
+  HttpForecastRepository({required this.api, required this.client});
   final WeatherMapAPI api;
   final http.Client client;
 
@@ -34,7 +37,6 @@ class HttpForecastRepositoryNew {
       switch (response.statusCode) {
         case 200: // 200 OK - Indicates that the request has succeeded
           final data = json.decode(response.body);
-          // print(data);
           return builder(data);
         case 401: // 401 Unauthorized -  Indicates that the request requires user authentication information
           throw InvalidApiKeyException();
@@ -49,11 +51,10 @@ class HttpForecastRepositoryNew {
   }
 }
 
-final forecastRepositoryProvider = Provider<HttpForecastRepositoryNew>((ref) {
+@Riverpod(keepAlive: true)
+HttpForecastRepository forecastRepository(ForecastRepositoryRef ref) {
   const apiKey =
       String.fromEnvironment('API_KEY', defaultValue: APIKeys.weatherAPIkey);
-  return HttpForecastRepositoryNew(
-    api: WeatherMapAPI(apiKey),
-    client: http.Client(),
-  );
-});
+  return HttpForecastRepository(
+      api: WeatherMapAPI(apiKey), client: http.Client());
+}

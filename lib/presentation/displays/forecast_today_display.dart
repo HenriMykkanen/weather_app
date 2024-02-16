@@ -27,7 +27,7 @@ class TodaysWeather extends ConsumerWidget {
                 return Container(
                   width: 96,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
                         DateFormat.Hm().format(

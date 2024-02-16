@@ -6,7 +6,7 @@ part of 'forecast_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$forecastHash() => r'57056902c88f5dab7d07db4b346d33abc053d932';
+String _$forecastHash() => r'adb043524f8466f06180a2195f3abf2a07ccf175';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -72,7 +72,7 @@ class ForecastFamily extends Family<AsyncValue<Forecast>> {
 }
 
 /// See also [forecast].
-class ForecastProvider extends AutoDisposeFutureProvider<Forecast> {
+class ForecastProvider extends FutureProvider<Forecast> {
   /// See also [forecast].
   ForecastProvider(
     String city,
@@ -123,7 +123,7 @@ class ForecastProvider extends AutoDisposeFutureProvider<Forecast> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<Forecast> createElement() {
+  FutureProviderElement<Forecast> createElement() {
     return _ForecastProviderElement(this);
   }
 
@@ -141,13 +141,13 @@ class ForecastProvider extends AutoDisposeFutureProvider<Forecast> {
   }
 }
 
-mixin ForecastRef on AutoDisposeFutureProviderRef<Forecast> {
+mixin ForecastRef on FutureProviderRef<Forecast> {
   /// The parameter `city` of this provider.
   String get city;
 }
 
-class _ForecastProviderElement
-    extends AutoDisposeFutureProviderElement<Forecast> with ForecastRef {
+class _ForecastProviderElement extends FutureProviderElement<Forecast>
+    with ForecastRef {
   _ForecastProviderElement(super.provider);
 
   @override

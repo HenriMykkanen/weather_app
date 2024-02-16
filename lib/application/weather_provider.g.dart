@@ -6,7 +6,7 @@ part of 'weather_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$weatherNowHash() => r'806e02b4ef425c0bc50a008193f1165ed39ee40e';
+String _$weatherNowHash() => r'2861ed6738a01b1f6f5f4485e6a93f5ab1e39ca0';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -72,7 +72,7 @@ class WeatherNowFamily extends Family<AsyncValue<CurrentWeather>> {
 }
 
 /// See also [weatherNow].
-class WeatherNowProvider extends AutoDisposeFutureProvider<CurrentWeather> {
+class WeatherNowProvider extends FutureProvider<CurrentWeather> {
   /// See also [weatherNow].
   WeatherNowProvider(
     String city,
@@ -124,7 +124,7 @@ class WeatherNowProvider extends AutoDisposeFutureProvider<CurrentWeather> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<CurrentWeather> createElement() {
+  FutureProviderElement<CurrentWeather> createElement() {
     return _WeatherNowProviderElement(this);
   }
 
@@ -142,13 +142,12 @@ class WeatherNowProvider extends AutoDisposeFutureProvider<CurrentWeather> {
   }
 }
 
-mixin WeatherNowRef on AutoDisposeFutureProviderRef<CurrentWeather> {
+mixin WeatherNowRef on FutureProviderRef<CurrentWeather> {
   /// The parameter `city` of this provider.
   String get city;
 }
 
-class _WeatherNowProviderElement
-    extends AutoDisposeFutureProviderElement<CurrentWeather>
+class _WeatherNowProviderElement extends FutureProviderElement<CurrentWeather>
     with WeatherNowRef {
   _WeatherNowProviderElement(super.provider);
 

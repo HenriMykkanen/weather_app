@@ -4,7 +4,7 @@ import 'package:weather_app/domain/forecast.dart';
 
 part 'forecast_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 Future<Forecast> forecast(ForecastRef ref, String city) async {
   final forecastRepository = ref.watch(forecastRepositoryProvider);
   final forecast = await forecastRepository.getForecast(city: city);

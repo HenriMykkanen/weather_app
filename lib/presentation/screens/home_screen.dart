@@ -14,58 +14,49 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ColorfulSafeArea(
-      color: colors(context).color3!,
+      color: colors(context).color3!.withOpacity(1),
       child: Scaffold(
         body: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                colors(context).color3!,
-                colors(context).color4!,
-              ])),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/mountain.jpg'), fit: BoxFit.cover),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Stack(
-                children: [
-                  SingleChildScrollView(
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      child: Column(
-                        children: [
-                          Expanded(
-                              flex: 3,
-                              child: CurrentWeatherDisplay(
-                                  cityProvider: defaultCityProvider)),
-                          Expanded(
-                              flex: 2,
-                              child: TodaysWeather(
-                                cityProvider: defaultCityProvider,
-                              )),
-                          Expanded(
-                            flex: 3,
-                            child: UpcomingWeather(
-                              cityProvider: defaultCityProvider,
-                            ),
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: Column(
+                      children: [
+                        Expanded(
+                            child: CurrentWeatherDisplay(
+                                cityProvider: defaultCityProvider)),
+                        Expanded(
+                            child: TodaysWeather(
+                          cityProvider: defaultCityProvider,
+                        )),
+                        Expanded(
+                          child: UpcomingWeather(
+                            cityProvider: defaultCityProvider,
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: GestureDetector(
-                      onTap: () {
-                        GoRouter.of(context).go('/c');
-                      },
-                      child: const Icon(Icons.settings),
-                    ),
-                  )
-                ],
-              ),
+                ),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).go('/c');
+                    },
+                    child: const Icon(Icons.settings),
+                  ),
+                )
+              ],
             ),
           ),
         ),
