@@ -1,6 +1,5 @@
 import 'package:weather_app/data/forecast_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:weather_app/domain/current_weather.dart';
 import 'package:weather_app/domain/current_weather_new.dart';
 import 'package:weather_app/domain/forecast.dart';
 
