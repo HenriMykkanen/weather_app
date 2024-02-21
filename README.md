@@ -5,13 +5,12 @@ Purpose of the project was to learn the basics of Riverpod State Management, att
 
 
 ## Screenshots featuring core functionalities and theming:
-<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/992856ab-9b12-42c8-b6e1-ca272f77f7af" alt="Screenshot" width="200" height="400">
-<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/70f078c5-4ae5-4bd4-9ba7-7c7a62748dfb" alt="Screenshot" width="200" height="400">
-<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/62ebbbbd-8e40-430b-860b-d735358146c9" alt="Screenshot" width="200" height="400">
-<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/ec07b688-0fd8-4b31-bede-4feb9ca4bdad" alt="Screenshot" width="200" height="400">
-<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/9ebd8896-1809-4eee-b16f-b3c1e6dc711e" alt="Screenshot" width="200" height="400">
-<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/2609d5af-787c-4b55-8a0c-3cc8047d3787" alt="Screenshot" width="200" height="400">
-<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/6bcc3f82-1161-47f3-a882-112b4bc41df6" alt="Screenshot" width="200" height="400">
+<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/dd85cf00-246e-45d4-b63b-0adfc729e555" alt="Screenshot" width="200" height="400">
+<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/3f72b981-d1d3-484c-84c0-324be0aed6c6" alt="Screenshot" width="200" height="400">
+<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/bbb09f74-8a1c-48c9-a4a2-56f8fd8b48fa" alt="Screenshot" width="200" height="400">
+<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/647a68c0-f9aa-461f-82c4-5760162c5521" alt="Screenshot" width="200" height="400">
+<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/99b03504-36a8-4e89-9569-8043b93b0b96" alt="Screenshot" width="200" height="400">
+<img src="https://github.com/HenriMykkanen/weather_app/assets/144138353/f16090a7-9ca1-4bb9-a3bf-9a0aa9d684877" alt="Screenshot" width="200" height="400">
 
 ## Functionalities
 
@@ -20,7 +19,7 @@ Purpose of the project was to learn the basics of Riverpod State Management, att
 - Forecast 3 days
 - Default city search
 - Custom city search
-- Light / Dark mode
+- Light / Dark mode (currently commented out for theme overhaul)
 
 ## Packages used
 
