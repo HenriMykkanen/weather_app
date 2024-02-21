@@ -31,13 +31,16 @@ class HomeScreen extends ConsumerWidget {
                     child: Column(
                       children: [
                         Expanded(
+                            flex: 2,
                             child: CurrentWeatherDisplay(
                                 cityProvider: defaultCityProvider)),
                         Expanded(
+                            flex: 1,
                             child: TodaysWeather(
-                          cityProvider: defaultCityProvider,
-                        )),
+                              cityProvider: defaultCityProvider,
+                            )),
                         Expanded(
+                          flex: 3,
                           child: UpcomingWeather(
                             cityProvider: defaultCityProvider,
                           ),

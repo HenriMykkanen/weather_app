@@ -62,12 +62,12 @@ class SearchScreen extends ConsumerWidget {
                         height: MediaQuery.of(context).size.height,
                         child: Column(children: [
                           Expanded(
-                              flex: 3,
+                              flex: 2,
                               child: CurrentWeatherDisplay(
                                 cityProvider: customCityProvider,
                               )),
                           Expanded(
-                              flex: 2,
+                              flex: 1,
                               child: TodaysWeather(
                                 cityProvider: customCityProvider,
                               )),

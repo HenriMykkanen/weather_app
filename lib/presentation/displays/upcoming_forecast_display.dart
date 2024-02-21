@@ -19,10 +19,9 @@ class UpcomingWeather extends ConsumerWidget {
           children: [
             ...data.forecastDays.asMap().entries.map(
               (index) {
-                return Expanded(
-                    child: Container(
-                  margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  padding: const EdgeInsets.all(0),
+                return Container(
+                  margin: const EdgeInsets.fromLTRB(0, 16, 0, 8),
+                  padding: const EdgeInsets.all(16),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -59,7 +58,7 @@ class UpcomingWeather extends ConsumerWidget {
                       const Spacer()
                     ],
                   ),
-                ));
+                );
               },
             )
           ],

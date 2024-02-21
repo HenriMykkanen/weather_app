@@ -26,9 +26,8 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
     scaffoldBackgroundColor:
         isDarkTheme ? Colors.black : Color.fromARGB(155, 255, 248, 227),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        elevation: 0,
-        backgroundColor:
-            isDarkTheme ? Colors.black : Colors.black.withOpacity(0.9),
+        elevation: 128,
+        backgroundColor: isDarkTheme ? Colors.black : Colors.black,
         selectedItemColor: isDarkTheme
             ? Colors.white
             : const Color.fromARGB(255, 255, 255, 255),
@@ -38,17 +37,17 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
     textTheme: Theme.of(context).textTheme.copyWith(
         displayLarge: TextStyle(
           fontSize: 92,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w400,
           color: isDarkTheme ? Colors.white70 : Colors.black87,
         ),
         displayMedium: TextStyle(
           fontSize: 36,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w400,
           color: isDarkTheme ? Colors.white70 : Colors.black87,
         ),
         displaySmall: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
             color: isDarkTheme
                 ? Colors.white70
                 : const Color.fromARGB(221, 255, 255, 255))),

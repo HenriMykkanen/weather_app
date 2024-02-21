@@ -18,24 +18,28 @@ class SettingsScreen extends ConsumerWidget {
     final isDarkTheme = ref.watch(appThemeProvider);
     final defaultCity = ref.watch(defaultCityProvider);
     return ColorfulSafeArea(
-      color: colors(context).color4!,
+      color: colors(context).color2!.withOpacity(1),
       child: Scaffold(
         body: Center(
           child: SettingsList(
             darkTheme: SettingsThemeData(
-              settingsListBackground: colors(context).color1,
+              settingsListBackground: colors(context).color2,
             ),
             lightTheme: SettingsThemeData(
-                settingsListBackground: colors(context).color4),
+                settingsListBackground: colors(context).color2),
             sections: [
               SettingsSection(
                 title: Text(
-                  'Common',
+                  'Settings',
                   style: Theme.of(context).textTheme.displaySmall,
                 ),
                 tiles: <SettingsTile>[
                   SettingsTile(
                     leading: const Icon(Icons.location_city),
+                    trailing: const Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                    ),
                     title: Text(
                       'Default city',
                       style: Theme.of(context).textTheme.displaySmall,
@@ -46,18 +50,18 @@ class SettingsScreen extends ConsumerWidget {
                     ),
                     onPressed: (context) => _editDefaultCity(context, ref),
                   ),
-                  SettingsTile.switchTile(
-                    onToggle: (value) {
-                      ref.read(appThemeProvider.notifier).state = value;
-                    },
-                    initialValue: isDarkTheme,
-                    activeSwitchColor: colors(context).color2,
-                    leading: const Icon(Icons.format_paint),
-                    title: Text(
-                      'Dark theme',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                  ),
+                  // SettingsTile.switchTile(
+                  //   onToggle: (value) {
+                  //     ref.read(appThemeProvider.notifier).state = value;
+                  //   },
+                  //   initialValue: isDarkTheme,
+                  //   activeSwitchColor: colors(context).color2,
+                  //   leading: const Icon(Icons.format_paint),
+                  //   title: Text(
+                  //     'Dark theme',
+                  //     style: Theme.of(context).textTheme.displaySmall,
+                  //   ),
+                  // ),
                 ],
               ),
             ],
